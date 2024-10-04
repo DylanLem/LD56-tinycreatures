@@ -16,6 +16,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
+func generate_grid():
+	pass;
+	
 func get_neighbour(cell: Cell, direction: Direction) -> Cell:
 	
 	return Cell.new();

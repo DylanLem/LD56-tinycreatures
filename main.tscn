@@ -1,3 +1,39 @@
-[gd_scene format=3 uid="uid://cv64bg47j3ejo"]
+[gd_scene load_steps=7 format=3 uid="uid://cv64bg47j3ejo"]
+
+[ext_resource type="Texture2D" uid="uid://hv4io5eyw7lq" path="res://sky.png" id="1_jnoyr"]
+[ext_resource type="Texture2D" uid="uid://dkukk83g0hwly" path="res://dirt.png" id="2_gp2cb"]
+[ext_resource type="Texture2D" uid="uid://bn4ip07mm3fhf" path="res://anthill.png" id="3_0c8sv"]
+[ext_resource type="PackedScene" uid="uid://joq7hokqwy4i" path="res://grid.tscn" id="3_d0j5q"]
+[ext_resource type="FontFile" uid="uid://dn6s86gj5ug1j" path="res://furphyTinyMono.ttf" id="5_uek4t"]
+[ext_resource type="Texture2D" uid="uid://cf0jiveoyt86" path="res://purchase_display.png" id="6_n8w8l"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Sky" type="Sprite2D" parent="."]
+position = Vector2(64, 32)
+texture = ExtResource("1_jnoyr")
+
+[node name="Dirt" type="Sprite2D" parent="."]
+position = Vector2(64, 96)
+texture = ExtResource("2_gp2cb")
+
+[node name="Grid" parent="." instance=ExtResource("3_d0j5q")]
+position = Vector2(0, 96)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 78.0
+offset_bottom = 7.0
+theme_override_fonts/font = ExtResource("5_uek4t")
+theme_override_font_sizes/font_size = 6
+text = "ANTS!!!!!!!
+"
+
+[node name="Anthill" type="Sprite2D" parent="."]
+position = Vector2(12, 56)
+texture = ExtResource("3_0c8sv")
+
+[node name="PurchaseDisplay" type="Sprite2D" parent="."]
+position = Vector2(66, 117)
+texture = ExtResource("6_n8w8l")

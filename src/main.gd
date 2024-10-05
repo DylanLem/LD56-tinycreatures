@@ -76,13 +76,12 @@ func _process(delta: float) -> void:
 
 
 func place_building(cells) -> void:
-	var icon = IconEffect.new()
-	icon.type = cell.type;
-	add_child(icon)
-
 	for cell in cells:
 		cell.type = cell.highlight_type
 		if(cell.type != Building.BuildingType.None):
+			var icon = IconEffect.new()
+			icon.type = cell.type;
+			add_child(icon)
 			cell.on_board_placement()
 	Global.increment_buildings_placed()
 

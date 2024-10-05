@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxj3ute5vy1k6"]
+[gd_scene load_steps=6 format=3 uid="uid://dxj3ute5vy1k6"]
 
 [ext_resource type="Texture2D" uid="uid://cf0jiveoyt86" path="res://sprites/purchase_display.png" id="1_5fbtt"]
 [ext_resource type="Script" path="res://src/purchase_display.gd" id="2_lli6v"]
 [ext_resource type="Texture2D" uid="uid://c3as4kjnnxxhf" path="res://sprites/down_arrow.png" id="3_tyxpg"]
 [ext_resource type="Script" path="res://scenes/current_building_display.gd" id="4_o5m31"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xq8we"]
 
 [node name="PurchaseDisplay" type="Sprite2D"]
 position = Vector2(66, 117)
@@ -15,6 +17,7 @@ offset_left = 31.0
 offset_top = -10.0
 offset_right = 36.0
 offset_bottom = -5.0
+mouse_default_cursor_shape = 2
 toggle_mode = true
 texture_normal = ExtResource("3_tyxpg")
 
@@ -27,4 +30,25 @@ offset_right = 30.0
 offset_bottom = 9.0
 script = ExtResource("4_o5m31")
 
+[node name="SkipButton" type="Button" parent="."]
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 10.0
+offset_bottom = 11.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 6
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xq8we")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_xq8we")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_xq8we")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_xq8we")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_xq8we")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_xq8we")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_xq8we")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_xq8we")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xq8we")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_xq8we")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xq8we")
+text = ">"
+
 [connection signal="toggled" from="ToggleButton" to="." method="_on_toggle_button_toggled"]
+[connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]

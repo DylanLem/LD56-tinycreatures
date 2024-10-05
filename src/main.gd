@@ -1,17 +1,16 @@
-extends Node2D
+class_name Main extends Node2D
+
 
 var mouse_pos: Vector2;
 var grid: Grid;
-
 var current_building: Building
 
 
 func _ready() -> void:
 	grid = get_node("Grid");
-	print(grid.position);
 	
-	current_building = Building.new()
-	var poop: Array;
+	current_building = null
+	randomize_building()
 	
 	pass # Replace with function body.
 
@@ -22,9 +21,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("right_click"):
 		current_building.rotate_clockwise()
 	
-	var mouse_pos = grid.mouse_grid_pos
-	
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+	
+	var mouse_pos = grid.mouse_grid_pos
 	
 	if mouse_pos.x >= 0 and \
 	mouse_pos.x < grid.columns and \
@@ -62,16 +61,27 @@ func _process(delta: float) -> void:
 		
 		if not has_neighbour:
 			for cell in building_cells:
-				cell.show_deny_placing = true
+				#cell.show_deny_placing = true
+				pass
 		
 		if valid_position and has_neighbour:
 			if Input.is_action_just_pressed("left_click"):
-				for cell in building_cells:
-					cell.type = cell.highlight_type
-					
+				if PlayerData.resources >= Global.place_building_cost:
+					for cell in building_cells:
+						cell.type = cell.highlight_type
+						if(cell.type != Building.BuildingType.None):
+							cell.on_board_placement()
+					randomize_building()
+					PlayerData.resources -= Global.place_building_cost
 				
-				for cell in building_cells:
-					if(cell.type != Building.BuildingType.None):
-						cell.on_board_placement()
-				current_building = Building.new()
 			Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+	
+	$ResourcesLabel.text = str(int(PlayerData.resources))
+
+
+func randomize_building() -> void:
+	current_building = Building.new()
+
+
+func _on_resource_production_timer_timeout() -> void:
+	PlayerData.resources += PlayerData.resource_production

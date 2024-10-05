@@ -1,6 +1,16 @@
 class_name Building extends Node2D
 
-enum BuildingType {None, Resources, Population, Attack, Defense, Efficiency, Speed, Invalid = -1}
+enum BuildingType {
+	Default = -2,
+	Invalid = -1,
+	None,
+	Resources,
+	Population,
+	Attack,
+	Defense,
+	Efficiency,
+	Speed,
+}
 
 #describes the cells that make up this building
 var cells;
@@ -107,6 +117,14 @@ func get_n_cols() -> int:
 	return cells[0].size()
 
 
+func get_width() -> int:
+	return get_n_cols() * 4 - 1
+
+
+func get_height() -> int:
+	return get_n_rows() * 4 - 1
+
+
 func rotate_clockwise() -> void:
 	var new_cells: Array[Array] = []
 	
@@ -146,4 +164,10 @@ static func get_random_shape():
 
 
 static func get_random_buildingtype() -> BuildingType:
-	return randi_range(1, BuildingType.size()-2)
+	return randi_range(1, BuildingType.values().max()-1)
+
+
+func draw():
+	for r in get_n_rows():
+		for c in get_n_cols():
+			pass

@@ -8,6 +8,8 @@ var type: Building.BuildingType = Building.BuildingType.None;
 var highlighted: bool = false
 var highlight_type: Building.BuildingType = Building.BuildingType.None
 
+var show_deny_placing: bool = false
+
 var grid: Grid;
 var cluster: Cluster;
 
@@ -27,6 +29,8 @@ func highlight(type: Building.BuildingType) -> void:
 
 static func get_color(type: Building.BuildingType) -> Color:
 	match type:
+		Building.BuildingType.Default:
+			return Color.BLACK
 		Building.BuildingType.Invalid:
 			return Color.BLACK
 		Building.BuildingType.None:
@@ -44,6 +48,7 @@ static func get_color(type: Building.BuildingType) -> Color:
 		Building.BuildingType.Speed:
 			return Color.SKY_BLUE
 	
+	print("oops something went wrong (i come from Cell.get_color)")
 	print(type)
 	return Color.WHITE
 	
@@ -88,3 +93,25 @@ func on_board_placement():
 		
 		
 	pass;
+
+
+func get_draw_color() -> Color:
+		if highlighted:
+			return get_color(highlight_type)
+		return get_color(type)
+
+
+func get_neighbours() -> Array[Cell]:
+	var n: Cell = grid.get_neighbour(self, Grid.Direction.North)
+	var e: Cell = grid.get_neighbour(self, Grid.Direction.East)
+	var s: Cell = grid.get_neighbour(self, Grid.Direction.South)
+	var w: Cell = grid.get_neighbour(self, Grid.Direction.West)
+	
+	var result: Array[Cell] = []
+	
+	if n != null: result.append(n)
+	if e != null: result.append(e)
+	if s != null: result.append(s)
+	if w != null: result.append(w)
+	
+	return result

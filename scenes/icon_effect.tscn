@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cku8us07k4pus"]
+
+[ext_resource type="Script" path="res://src/icon_effect.gd" id="1_cdk38"]
+
+[node name="IconEffect" type="Sprite2D"]
+z_index = 10
+z_as_relative = false
+script = ExtResource("1_cdk38")

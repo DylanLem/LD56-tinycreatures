@@ -30,6 +30,10 @@ window/size/window_height_override=768
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/ColorPreview/plugin.cfg")
+
 [gui]
 
 theme/custom_font="res://furphyTinyMono.ttf"

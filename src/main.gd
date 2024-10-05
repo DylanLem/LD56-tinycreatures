@@ -70,6 +70,9 @@ func _process(delta: float) -> void:
 					for cell in building_cells:
 						cell.type = cell.highlight_type
 						if(cell.type != Building.BuildingType.None):
+							var icon = IconEffect.new()
+							icon.type = cell.type;
+							add_child(icon)
 							cell.on_board_placement()
 					randomize_building()
 					PlayerData.resources -= Global.place_building_cost

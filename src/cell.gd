@@ -38,15 +38,15 @@ static func get_color(type: Building.BuildingType) -> Color:
 		Building.BuildingType.Resources:
 			return Color.CORAL
 		Building.BuildingType.Population:
-			return Color.GREEN_YELLOW
+			return Color(0.767, 0.793, 0.6951, 1)
 		Building.BuildingType.Attack:
-			return Color.DARK_RED
+			return Color(0.6406, 0.1898, 0.1898, 1)
 		Building.BuildingType.Defense:
-			return Color.DARK_BLUE
+			return Color(0.102, 0.1686, 0.3569, 1)
 		Building.BuildingType.Efficiency:
-			return Color.GAINSBORO
+			return Color(0.9453, 0.9131, 0.4295, 1)
 		Building.BuildingType.Speed:
-			return Color.SKY_BLUE
+			return Color(0.4231, 0.7539, 0.4039, 1)
 
 	return Color.WHITE
 	

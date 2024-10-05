@@ -6,7 +6,7 @@ enum Shape {}
 
 var default_position;
 
-var game: Main
+var game: Main;
 
 
 func _ready() -> void:

@@ -13,7 +13,7 @@ void fragment() {
 			if(ants[i] == int(UV.x * float(textureSize(TEXTURE,0).x)) ){
 				COLOR.rgba = vec4(1,0,0,1);
 			}
-			
+
 		}
 	}	// Called for every pixel the material is visible on.
 }

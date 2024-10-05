@@ -12,9 +12,12 @@ var size: int :
 func assimilate_cluster(cluster: Cluster):
 	if(cluster.type != self.type):
 		print("attempted to merge clusters of different type: ", self.type, " to ", cluster.type)
-		
+	
+	
 	for cell in cluster.cells:
 		cell.cluster = self;
-	cells.append_array(cluster.cells)
-	cluster.cells.clear();
+		if(! self.cells.has(cell)):
+			self.cells.append(cell)
+	
+
 	pass;

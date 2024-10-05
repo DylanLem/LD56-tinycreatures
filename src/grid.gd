@@ -28,11 +28,11 @@ func update(delta: float) -> void:
 	
 	for row in contents:
 		for cell in row:
-			cell.color = Color.BLACK
+			cell.highlighted = false
 	
 	#if mouse_grid_pos.x >= 0 and mouse_grid_pos.x < columns and \
 		#mouse_grid_pos.y >= 0 and mouse_grid_pos.y < rows:
-		#contents[mouse_grid_pos.x][mouse_grid_pos.y].color = Color.WHITE
+		#contents[mouse_grid_pos.y][mouse_grid_pos.x].highlight(Building.BuildingType.Attack)
 
 
 func get_neighbour(cell: Cell, direction: Direction) -> Cell:
@@ -50,7 +50,11 @@ func get_neighbour(cell: Cell, direction: Direction) -> Cell:
 
 
 func _draw() -> void:
-	if contents.size() > 0:
-		for row in range(contents[0].size()):
-			for column in range(contents.size()):
-				draw_rect(Rect2i(row*4, column*4, 3, 3), contents[row][column].color)
+	for row in range(contents.size()):
+		for col in range(contents[0].size()):
+			var cell = contents[row][col]
+			
+			var color = Cell.get_color(cell.type)
+			if cell.highlighted: color = Cell.get_color(cell.highlight_type)
+			
+			draw_rect(Rect2i(col*4, row*4, 3, 3), color)

@@ -1,24 +1,57 @@
-extends Node2D
+class_name Grid extends Node2D
+
+
+static var scene: PackedScene = preload("res://grid.tscn")
 
 enum Direction {North, South, East, West}
 
-var width: int;
-var height: int;
+@export var rows: int;
+@export var columns: int;
 
-var contents: Array[Array];
+var contents: Array[Array] = [];
 
-# Called when the node enters the scene tree for the first time.
+var lightup_pos: Vector2i = Vector2i(0,0)
+
+
 func _ready() -> void:
-	pass # Replace with function body.
+	for r in range(rows):
+		var column = []
+		for c in range(columns):
+			var cell = Cell.new()
+			cell.row = r
+			cell.column = c
+			column.append(cell)
+		self.contents.append(column)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-	
-func generate_grid():
-	pass;
-	
+	var mouse_pos = get_local_mouse_position()
+	#print(mouse_pos)
+	var grid_pos = Vector2i(mouse_pos.x / 4, mouse_pos.y / 4)
+	#print(grid_pos)
+	lightup_pos = grid_pos
+	queue_redraw()
+
+
 func get_neighbour(cell: Cell, direction: Direction) -> Cell:
+	match direction:
+		Direction.North:
+			return contents[cell.row-1][cell.column]
+		Direction.East:
+			return contents[cell.row][cell.column+1]
+		Direction.South:
+			return contents[cell.row+1][cell.column]
+		Direction.West:
+			return contents[cell.row][cell.column-1]
 	
-	return Cell.new();
+	return null
+
+
+func _draw() -> void:
+	if contents.size() > 0:
+		for row in range(contents[0].size()):
+			for column in range(contents.size()):
+				var color = Color.BLACK
+				if row == lightup_pos.x and column == lightup_pos.y:
+					color = Color.WHITE
+				draw_rect(Rect2i(row*4, column*4, 3, 3), color)

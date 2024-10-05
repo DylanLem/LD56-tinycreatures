@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dn6s86gj5ug1j"
-path="res://.godot/imported/furphyTinyMono.ttf-c0823a22a55ffb78d34232c98061498b.fontdata"
+uid="uid://3e4201c634q5"
+path="res://.godot/imported/furphyTiny.ttf-7579fc587755637144b7443a0ba57a81.fontdata"
 
 [deps]
 
-source_file="res://furphyTinyMono.ttf"
-dest_files=["res://.godot/imported/furphyTinyMono.ttf-c0823a22a55ffb78d34232c98061498b.fontdata"]
+source_file="res://furphyTiny.ttf"
+dest_files=["res://.godot/imported/furphyTiny.ttf-7579fc587755637144b7443a0ba57a81.fontdata"]
 
 [params]
 

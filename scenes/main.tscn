@@ -24,6 +24,8 @@ shader_parameter/termites = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5nwcm"]
 shader = ExtResource("3_sg7wr")
+shader_parameter/colour_links = null
+shader_parameter/colour_link_colours = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_74g40"]
 shader = ExtResource("1_7o0j6")
@@ -63,6 +65,7 @@ text = "all termites will die
 [node name="Anthill" parent="." instance=ExtResource("11_8thdj")]
 
 [node name="PurchaseDisplay" parent="." instance=ExtResource("8_t1byr")]
+position = Vector2(92, 117)
 
 [node name="Camera" parent="." instance=ExtResource("9_5im6t")]
 position = Vector2(64, 64)

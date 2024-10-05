@@ -3,6 +3,8 @@ shader_type canvas_item;
 uniform int[128] ants;
 uniform int[128] termites;
 
+
+
 const int y_val = 64;
 
 
@@ -15,5 +17,7 @@ void fragment() {
 			}
 
 		}
-	}	// Called for every pixel the material is visible on.
+	}
+	
+		// Called for every pixel the material is visible on.
 }

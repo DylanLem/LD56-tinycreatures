@@ -18,7 +18,6 @@ func _ready() -> void:
 	cloudTimer.timeout.connect(Callable(self,"make_cloud"))
 	cloudTimer.set_wait_time(float(randi_range(3,10)));
 	cloudTimer.start();
-	print(cloudTimer.wait_time , " HEHE")
 	
 	make_cloud()
 	make_cloud()

@@ -1,8 +1,5 @@
 class_name Grid extends Node2D
 
-
-static var scene: PackedScene = preload("res://grid.tscn")
-
 enum Direction {North, South, East, West}
 
 @export var rows: int;

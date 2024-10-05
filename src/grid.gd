@@ -41,13 +41,17 @@ func update(delta: float) -> void:
 func get_neighbour(cell: Cell, direction: Direction) -> Cell:
 	match direction:
 		Direction.North:
-			return contents[cell.row-1][cell.column]
+			if(cell.row>0):
+				return contents[cell.row-1][cell.column]
 		Direction.East:
-			return contents[cell.row][cell.column+1]
+			if(contents[cell.row].size() -1 > cell.column):
+				return contents[cell.row][cell.column+1]
 		Direction.South:
-			return contents[cell.row+1][cell.column]
+			if(contents.size() -1> cell.row):
+				return contents[cell.row+1][cell.column]
 		Direction.West:
-			return contents[cell.row][cell.column-1]
+			if(cell.column>0):
+				return contents[cell.row][cell.column-1]
 	
 	return null
 

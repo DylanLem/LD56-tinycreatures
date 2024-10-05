@@ -129,7 +129,6 @@ static func get_shape(n: int):
 	
 	for r in range(shape.size()):
 		for c in range(shape[0].size()):
-			print(shape[r][c])
 			if shape[r][c] == 1:
 				shape[r][c] = one
 			elif shape[r][c] == 2:

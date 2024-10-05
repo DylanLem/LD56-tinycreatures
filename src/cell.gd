@@ -36,7 +36,7 @@ static func get_color(type: Building.BuildingType) -> Color:
 		Building.BuildingType.Attack:
 			return Color.FIREBRICK
 	
-	return Color.BLACK
+	return Color.WHITE
 	
 	
 	
@@ -49,8 +49,10 @@ func on_board_placement():
 	var matching_neighbours = [];		
 					
 	for neighbour in neighbours:
+		if(neighbour == null):
+			continue;
 		if(neighbour.type == self.type):
-			matching_neighbours.add(neighbour)
+			matching_neighbours.append(neighbour)
 		pass;
 	
 	match matching_neighbours.size():
@@ -77,5 +79,5 @@ func on_board_placement():
 				clussy.assimilate_cluster(matched.cluster)
 			self.cluster = clussy;
 		
-		
+	print("CLUSSY: ", self.cluster.size)	
 	pass;

@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dgmjnfa0evt7l" path="res://sprites/cloud_tiny1.png" id="6_ow2ae"]
 [ext_resource type="PackedScene" uid="uid://dxj3ute5vy1k6" path="res://scenes/purchase_display.tscn" id="8_t1byr"]
 [ext_resource type="PackedScene" uid="uid://bx600irlpigjt" path="res://scenes/camera.tscn" id="9_5im6t"]
-[ext_resource type="PackedScene" path="res://scenes/anthill.tscn" id="11_8thdj"]
+[ext_resource type="PackedScene" uid="uid://cxqssc8w337tm" path="res://scenes/anthill.tscn" id="11_8thdj"]
 [ext_resource type="Texture2D" uid="uid://cme5t3dwepnwm" path="res://sprites/termite_hole.png" id="14_dslwf"]
 [ext_resource type="Texture2D" uid="uid://di521668g62mo" path="res://sprites/creature_line.png" id="16_71rld"]
 

@@ -1,4 +1,4 @@
-extends Node2D
+class_name Grid extends Node2D
 
 enum Direction {North, South, East, West}
 

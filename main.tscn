@@ -1,24 +1,32 @@
-[gd_scene load_steps=7 format=3 uid="uid://cv64bg47j3ejo"]
+[gd_scene load_steps=11 format=3 uid="uid://cv64bg47j3ejo"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_dnx4c"]
 [ext_resource type="Texture2D" uid="uid://hv4io5eyw7lq" path="res://sky.png" id="1_jnoyr"]
 [ext_resource type="Texture2D" uid="uid://dkukk83g0hwly" path="res://dirt.png" id="2_gp2cb"]
 [ext_resource type="Texture2D" uid="uid://bn4ip07mm3fhf" path="res://anthill.png" id="3_0c8sv"]
+[ext_resource type="Shader" path="res://gridmaker.gdshader" id="3_4lkvg"]
 [ext_resource type="PackedScene" uid="uid://joq7hokqwy4i" path="res://grid.tscn" id="3_d0j5q"]
 [ext_resource type="FontFile" uid="uid://dn6s86gj5ug1j" path="res://furphyTinyMono.ttf" id="5_uek4t"]
-[ext_resource type="Texture2D" uid="uid://cf0jiveoyt86" path="res://purchase_display.png" id="6_n8w8l"]
+[ext_resource type="PackedScene" uid="uid://dxj3ute5vy1k6" path="res://purchase_display.tscn" id="6_5jpi7"]
+[ext_resource type="PackedScene" uid="uid://bx600irlpigjt" path="res://camera.tscn" id="9_6tpey"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5nwcm"]
+shader = ExtResource("3_4lkvg")
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_dnx4c")
 
 [node name="Sky" type="Sprite2D" parent="."]
 position = Vector2(64, 32)
 texture = ExtResource("1_jnoyr")
 
 [node name="Dirt" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5nwcm")
 position = Vector2(64, 96)
 texture = ExtResource("2_gp2cb")
 
 [node name="Grid" parent="." instance=ExtResource("3_d0j5q")]
-position = Vector2(0, 96)
+position = Vector2(0, 64)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 3.0
@@ -34,6 +42,7 @@ text = "ANTS!!!!!!!
 position = Vector2(12, 56)
 texture = ExtResource("3_0c8sv")
 
-[node name="PurchaseDisplay" type="Sprite2D" parent="."]
-position = Vector2(66, 117)
-texture = ExtResource("6_n8w8l")
+[node name="PurchaseDisplay" parent="." instance=ExtResource("6_5jpi7")]
+
+[node name="Camera" parent="." instance=ExtResource("9_6tpey")]
+position = Vector2(64, 64)

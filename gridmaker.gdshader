@@ -10,7 +10,8 @@ void vertex() {
 void fragment() {
 	vec2 pixel_scale = 1./vec2(textureSize(TEXTURE,0));
 	
-	if( (int(UV.x * float(textureSize(TEXTURE,0).x)) + 1) % 4 == 0  && (int(UV.y * float(textureSize(TEXTURE,0).y)) + 1) % 4 == 0){
+	if( (int(UV.x * float(textureSize(TEXTURE,0).x)) + 1) % 4 == 0  && (int(UV.y * float(textureSize(TEXTURE,0).y)) + 1) % 4 == 0
+		&& UV.x <= 0.5 - pixel_scale.x && UV.y < 1. - pixel_scale.y){
 		COLOR.r += 0.1;
 	}
 	

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_dnx4c"]
 [ext_resource type="Texture2D" uid="uid://hv4io5eyw7lq" path="res://sky.png" id="1_jnoyr"]
-[ext_resource type="Script" path="res://main.gd" id="1_vh7o4"]
 [ext_resource type="Texture2D" uid="uid://dkukk83g0hwly" path="res://dirt.png" id="2_gp2cb"]
 [ext_resource type="Texture2D" uid="uid://bn4ip07mm3fhf" path="res://anthill.png" id="3_0c8sv"]
 [ext_resource type="Shader" path="res://gridmaker.gdshader" id="3_4lkvg"]

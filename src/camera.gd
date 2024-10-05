@@ -27,7 +27,6 @@ func do_zoom(direction: bool)-> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action("ZoomIn"):
-		print("yellow")
 		do_zoom(true);
 	if event.is_action("ZoomOut"):
 		do_zoom(false);

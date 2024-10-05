@@ -11,6 +11,7 @@ func _ready() -> void:
 	print(grid.position);
 	
 	current_building = Building.new()
+	var poop: Array;
 	
 	pass # Replace with function body.
 

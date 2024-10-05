@@ -66,20 +66,24 @@ func _process(delta: float) -> void:
 		
 		if valid_position and has_neighbour:
 			if Input.is_action_just_pressed("left_click"):
-				if PlayerData.resources >= Global.place_building_cost:
-					for cell in building_cells:
-						cell.type = cell.highlight_type
-						if(cell.type != Building.BuildingType.None):
-							var icon = IconEffect.new()
-							icon.type = cell.type;
-							add_child(icon)
-							cell.on_board_placement()
+				if Global.resources >= Global.place_building_cost:
+					place_building(building_cells)
 					randomize_building()
-					PlayerData.resources -= Global.place_building_cost
 				
 			Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 	
-	$ResourcesLabel.text = str(int(PlayerData.resources))
+	$ResourcesLabel.text = "resources:" + str(int(Global.resources))
+
+
+func place_building(cells) -> void:
+	for cell in cells:
+		cell.type = cell.highlight_type
+		if(cell.type != Building.BuildingType.None):
+			var icon = IconEffect.new()
+			icon.type = cell.type;
+			add_child(icon)
+			cell.on_board_placement()
+	Global.increment_buildings_placed()
 
 
 func randomize_building() -> void:
@@ -87,4 +91,4 @@ func randomize_building() -> void:
 
 
 func _on_resource_production_timer_timeout() -> void:
-	PlayerData.resources += PlayerData.resource_production
+	Global.resources += Global.resource_production

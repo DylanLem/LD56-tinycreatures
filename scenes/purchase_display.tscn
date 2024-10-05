@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxj3ute5vy1k6"]
+[gd_scene load_steps=8 format=3 uid="uid://dxj3ute5vy1k6"]
 
 [ext_resource type="Texture2D" uid="uid://cf0jiveoyt86" path="res://sprites/purchase_display.png" id="1_5fbtt"]
 [ext_resource type="Script" path="res://src/purchase_display.gd" id="2_lli6v"]
@@ -6,6 +6,11 @@
 [ext_resource type="Script" path="res://scenes/current_building_display.gd" id="4_o5m31"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xq8we"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lorhp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_768k2"]
+bg_color = Color(0.270222, 0.270222, 0.270222, 1)
 
 [node name="PurchaseDisplay" type="Sprite2D"]
 position = Vector2(66, 117)
@@ -31,10 +36,10 @@ offset_bottom = 9.0
 script = ExtResource("4_o5m31")
 
 [node name="SkipButton" type="Button" parent="."]
-offset_left = -1.0
-offset_top = 1.0
-offset_right = 10.0
-offset_bottom = 11.0
+offset_left = -30.0
+offset_top = 2.0
+offset_right = 9.0
+offset_bottom = 10.0
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 6
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xq8we")
@@ -43,12 +48,21 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_xq8we")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_xq8we")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_xq8we")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_xq8we")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_xq8we")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lorhp")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_xq8we")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_xq8we")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_xq8we")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_xq8we")
+theme_override_styles/normal = SubResource("StyleBoxFlat_768k2")
 text = ">"
+alignment = 2
+
+[node name="BuildingCost" type="Label" parent="."]
+offset_left = -30.0
+offset_top = -7.0
+offset_right = 9.0
+offset_bottom = 1.0
+theme_override_font_sizes/font_size = 6
+horizontal_alignment = 2
 
 [connection signal="toggled" from="ToggleButton" to="." method="_on_toggle_button_toggled"]
 [connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]

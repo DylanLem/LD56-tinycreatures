@@ -164,7 +164,7 @@ static func get_random_shape():
 
 
 static func get_random_buildingtype() -> BuildingType:
-	return randi_range(1, BuildingType.values().max()-1)
+	return randi_range(1, BuildingType.values().max())
 
 
 func draw():

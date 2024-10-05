@@ -27,7 +27,6 @@ func _process(delta: float) -> void:
 		ant.pos = floor(ant.sub_pos);
 	
 	if ants.front().pos > get_parent().get_node("TermiteHole").position.x:
-		print("ants have reached the termite hole...")
 		ants.pop_front()
 
 	parent.get_node("Creatures").material.set_shader_parameter("ants",ant_pos)

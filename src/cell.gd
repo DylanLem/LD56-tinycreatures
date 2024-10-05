@@ -3,8 +3,10 @@ class_name Cell extends Node2D
 
 var building: Building;
 
-var row: int
-var column: int
+var row: int = 0
+var column: int = 0
+
+var color: Color = Color.BLACK
 
 
 func _ready() -> void:

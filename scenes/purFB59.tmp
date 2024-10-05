@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxj3ute5vy1k6"]
+[gd_scene load_steps=4 format=3 uid="uid://dxj3ute5vy1k6"]
 
 [ext_resource type="Texture2D" uid="uid://cf0jiveoyt86" path="res://sprites/purchase_display.png" id="1_5fbtt"]
 [ext_resource type="Script" path="res://src/purchase_display.gd" id="2_lli6v"]
 [ext_resource type="Texture2D" uid="uid://c3as4kjnnxxhf" path="res://sprites/down_arrow.png" id="3_tyxpg"]
-[ext_resource type="Script" path="res://scenes/current_building_display.gd" id="4_o5m31"]
 
 [node name="PurchaseDisplay" type="Sprite2D"]
 position = Vector2(66, 117)
@@ -17,14 +16,5 @@ offset_right = 36.0
 offset_bottom = -5.0
 toggle_mode = true
 texture_normal = ExtResource("3_tyxpg")
-
-[node name="CurrentBuildingDisplay" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 13.0
-offset_top = -8.0
-offset_right = 30.0
-offset_bottom = 9.0
-script = ExtResource("4_o5m31")
 
 [connection signal="toggled" from="ToggleButton" to="." method="_on_toggle_button_toggled"]

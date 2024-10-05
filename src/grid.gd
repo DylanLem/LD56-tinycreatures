@@ -1,5 +1,6 @@
 class_name Grid extends Node2D
 
+
 enum Direction {North, South, East, West}
 
 @export var rows: int;
@@ -22,6 +23,8 @@ func _ready() -> void:
 			cell.column = c
 			column.append(cell)
 		self.contents.append(column)
+	
+	contents[0][2].type = Building.BuildingType.Default
 
 
 func update(delta: float) -> void:
@@ -32,6 +35,7 @@ func update(delta: float) -> void:
 	for row in contents:
 		for cell in row:
 			cell.highlighted = false
+			cell.show_deny_placing = false
 	
 	#if mouse_grid_pos.x >= 0 and mouse_grid_pos.x < columns and \
 		#mouse_grid_pos.y >= 0 and mouse_grid_pos.y < rows:
@@ -39,6 +43,7 @@ func update(delta: float) -> void:
 
 
 func get_neighbour(cell: Cell, direction: Direction) -> Cell:
+
 	match direction:
 		Direction.North:
 			if(cell.row>0):
@@ -52,6 +57,7 @@ func get_neighbour(cell: Cell, direction: Direction) -> Cell:
 		Direction.West:
 			if(cell.column>0):
 				return contents[cell.row][cell.column-1]
+
 	
 	return null
 
@@ -61,7 +67,17 @@ func _draw() -> void:
 		for col in range(contents[0].size()):
 			var cell = contents[row][col]
 			
-			var color = Cell.get_color(cell.type)
-			if cell.highlighted: color = Cell.get_color(cell.highlight_type)
+			draw_rect(
+				Rect2i(
+					col*(Global.cell_size+1),
+					row*(Global.cell_size+1),
+					Global.cell_size,
+					Global.cell_size
+				),
+				cell.get_draw_color()
+			)
 			
-			draw_rect(Rect2i(col*4, row*4, 3, 3), color)
+			if cell.show_deny_placing:
+				draw_texture(preload("res://sprites/x.png"), Vector2i(
+					col*(Global.cell_size+1)-1, row*(Global.cell_size+1)-1
+					))

@@ -42,20 +42,21 @@ func _process(delta: float) -> void:
 				
 				var building_cell = current_building.cells[r][c]
 				
-				if building_cell == 1 and cell.type != Building.BuildingType.None:
+				if building_cell != Building.BuildingType.None and \
+				cell.type != Building.BuildingType.None:
 					invalid_position = true
+				elif cell.type == Building.BuildingType.None:
+					cell.highlight(building_cell)
 				
-				if building_cell == 1:
+				if building_cell != Building.BuildingType.None:
 					building_cells.append(cell)
 		
 		for cell in building_cells:
-			if not invalid_position:
-				cell.highlight(Building.BuildingType.Resources)
-			else:
+			if invalid_position:
 				cell.highlight(Building.BuildingType.Invalid)
 		
 		if not invalid_position:
 			if Input.is_action_just_pressed("left_click"):
 				for cell in building_cells:
-					cell.type = Building.BuildingType.Resources
+					cell.type = cell.highlight_type
 				current_building = Building.new()

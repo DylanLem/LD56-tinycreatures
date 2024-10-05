@@ -24,6 +24,8 @@ func highlight(type: Building.BuildingType) -> void:
 
 static func get_color(type: Building.BuildingType) -> Color:
 	match type:
+		Building.BuildingType.Invalid:
+			return Color.BLACK
 		Building.BuildingType.None:
 			return Color.TRANSPARENT
 		Building.BuildingType.Resources:
@@ -31,4 +33,4 @@ static func get_color(type: Building.BuildingType) -> Color:
 		Building.BuildingType.Attack:
 			return Color.FIREBRICK
 	
-	return Color.BLACK
+	return Color.WHITE

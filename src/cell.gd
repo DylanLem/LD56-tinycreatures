@@ -4,6 +4,9 @@ var row: int = 0
 var column: int = 0
 
 var type: Building.BuildingType = Building.BuildingType.None;
+var multiplier: float:
+	get:
+		calculate_multi();
 
 var highlighted: bool = false
 var highlight_type: Building.BuildingType = Building.BuildingType.None
@@ -145,3 +148,11 @@ func get_neighbours() -> Array[Cell]:
 	if w != null: result.append(w)
 	
 	return result
+
+
+
+func calculate_multi() -> float:
+	return self.cluster.multiplier;
+
+func apply_multi() -> void:
+	pass;

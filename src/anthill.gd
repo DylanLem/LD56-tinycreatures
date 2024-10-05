@@ -10,7 +10,7 @@ var spawn_timer: Timer;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	spawn_timer = Timer.new();
-	spawn_timer.wait_time = float(ant_cost/PlayerData.ant_production)
+	spawn_timer.wait_time = float(ant_cost/Global.ant_production)
 	spawn_timer.timeout.connect(spawn_ant);
 	add_child(spawn_timer)
 	spawn_ant()
@@ -23,14 +23,18 @@ func _process(delta: float) -> void:
 	var ant_pos: Array;
 	for ant in ants:
 		ant_pos.append(ant.pos)
-		ant.sub_pos += PlayerData.ant_speed*delta;
+		ant.sub_pos += Global.ant_speed*delta;
 		ant.pos = floor(ant.sub_pos);
+	
+	if ants.front().pos > get_parent().get_node("TermiteHole").position.x:
+		print("ants have reached the termite hole...")
+		ants.pop_front()
 
 	parent.get_node("Creatures").material.set_shader_parameter("ants",ant_pos)
 	pass
 
 func reset_timer():
-	spawn_timer.wait_time = float(ant_cost/PlayerData.ant_production)
+	spawn_timer.wait_time = float(ant_cost/Global.ant_production)
 	spawn_timer.start();
 	
 	

@@ -10,7 +10,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	sub_pos += PlayerData.ant_speed*delta;
+	sub_pos += Global.ant_speed*delta;
 	pos = floor(sub_pos);
 	
 	pass

@@ -66,11 +66,11 @@ func on_board_placement():
 			continue;
 		if(neighbour.type == self.type):
 			var midpoint = Vector2((neighbour.column + self.column)/ 2., (neighbour.row + self.row) /2.)
-			if(! PlayerData.colour_links.has(midpoint)):
-				PlayerData.colour_links.append(midpoint);
-				PlayerData.colour_link_colours.append(get_color(self.type))
-				grid.get_parent().get_node("Dirt").material.set_shader_parameter("colour_links", PlayerData.colour_links)
-				grid.get_parent().get_node("Dirt").material.set_shader_parameter("colour_link_colours", PlayerData.colour_link_colours)
+			if(! Global.colour_links.has(midpoint)):
+				Global.colour_links.append(midpoint);
+				Global.colour_link_colours.append(get_color(self.type))
+				grid.get_parent().get_node("Dirt").material.set_shader_parameter("colour_links", Global.colour_links)
+				grid.get_parent().get_node("Dirt").material.set_shader_parameter("colour_link_colours", Global.colour_link_colours)
 			matching_neighbours.append(neighbour)
 		pass;
 	

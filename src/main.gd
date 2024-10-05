@@ -34,7 +34,6 @@ func _process(delta: float) -> void:
 		
 		for r in range(current_building.get_n_rows()):
 			for c in range(current_building.get_n_cols()):
-				
 				var building_row = clamp(mouse_pos.y - floor(current_building.get_n_rows() / 2.0), 0, 14 - current_building.get_n_rows() + 1) + r
 				var building_col = clamp(mouse_pos.x - floor(current_building.get_n_cols() / 2.0), 0, 14 - current_building.get_n_cols() + 1) + c
 				

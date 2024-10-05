@@ -32,11 +32,20 @@ static func get_color(type: Building.BuildingType) -> Color:
 		Building.BuildingType.None:
 			return Color.TRANSPARENT
 		Building.BuildingType.Resources:
-			return Color.DARK_GREEN
+			return Color.CORAL
+		Building.BuildingType.Population:
+			return Color.GREEN_YELLOW
 		Building.BuildingType.Attack:
-			return Color.FIREBRICK
+			return Color.DARK_RED
+		Building.BuildingType.Defense:
+			return Color.DARK_BLUE
+		Building.BuildingType.Efficiency:
+			return Color.GAINSBORO
+		Building.BuildingType.Speed:
+			return Color.SKY_BLUE
 	
-	return Color.BLACK
+	print(type)
+	return Color.WHITE
 	
 	
 	

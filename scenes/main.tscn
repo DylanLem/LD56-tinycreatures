@@ -1,0 +1,50 @@
+[gd_scene load_steps=11 format=3 uid="uid://cv64bg47j3ejo"]
+
+[ext_resource type="Script" path="res://src/main.gd" id="1_jg0v1"]
+[ext_resource type="Texture2D" uid="uid://hv4io5eyw7lq" path="res://sprites/sky.png" id="2_h4tx2"]
+[ext_resource type="Shader" path="res://src/gridmaker.gdshader" id="3_sg7wr"]
+[ext_resource type="Texture2D" uid="uid://dkukk83g0hwly" path="res://sprites/dirt.png" id="4_8jiit"]
+[ext_resource type="PackedScene" uid="uid://joq7hokqwy4i" path="res://scenes/grid.tscn" id="5_vuwdq"]
+[ext_resource type="FontFile" uid="uid://dn6s86gj5ug1j" path="res://furphyTinyMono.ttf" id="6_3d55t"]
+[ext_resource type="Texture2D" uid="uid://bn4ip07mm3fhf" path="res://sprites/anthill.png" id="7_d0lhr"]
+[ext_resource type="PackedScene" uid="uid://dxj3ute5vy1k6" path="res://scenes/purchase_display.tscn" id="8_t1byr"]
+[ext_resource type="PackedScene" uid="uid://bx600irlpigjt" path="res://scenes/camera.tscn" id="9_5im6t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5nwcm"]
+shader = ExtResource("3_sg7wr")
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_jg0v1")
+
+[node name="Sky" type="Sprite2D" parent="."]
+position = Vector2(64, 32)
+texture = ExtResource("2_h4tx2")
+
+[node name="Dirt" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5nwcm")
+position = Vector2(64, 96)
+texture = ExtResource("4_8jiit")
+
+[node name="Grid" parent="." instance=ExtResource("5_vuwdq")]
+position = Vector2(0, 64)
+rows = 10
+columns = 10
+
+[node name="Label" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 78.0
+offset_bottom = 7.0
+theme_override_fonts/font = ExtResource("6_3d55t")
+theme_override_font_sizes/font_size = 6
+text = "ANTS!!!!!!!
+"
+
+[node name="Anthill" type="Sprite2D" parent="."]
+position = Vector2(12, 56)
+texture = ExtResource("7_d0lhr")
+
+[node name="PurchaseDisplay" parent="." instance=ExtResource("8_t1byr")]
+
+[node name="Camera" parent="." instance=ExtResource("9_5im6t")]
+position = Vector2(64, 64)

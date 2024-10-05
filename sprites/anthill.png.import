@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkukk83g0hwly"
-path="res://.godot/imported/dirt.png-81db9f47be16674f640109976e043256.ctex"
+uid="uid://bn4ip07mm3fhf"
+path="res://.godot/imported/anthill.png-0dec575ffa9624c0f6b95edb232c6067.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://dirt.png"
-dest_files=["res://.godot/imported/dirt.png-81db9f47be16674f640109976e043256.ctex"]
+source_file="res://sprites/anthill.png"
+dest_files=["res://.godot/imported/anthill.png-0dec575ffa9624c0f6b95edb232c6067.ctex"]
 
 [params]
 

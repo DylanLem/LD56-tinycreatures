@@ -7,6 +7,8 @@ enum Direction {North, South, East, West}
 
 var contents: Array[Array] = [];
 
+
+
 var mouse_grid_pos: Vector2i = Vector2i(0,0)
 
 
@@ -15,6 +17,7 @@ func _ready() -> void:
 		var column = []
 		for c in range(columns):
 			var cell = Cell.new()
+			cell.grid = self;
 			cell.row = r
 			cell.column = c
 			column.append(cell)

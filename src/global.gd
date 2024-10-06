@@ -48,7 +48,7 @@ var stat_map: Dictionary = {
 }
 
 func update_stat(b_type: Building.BuildingType, value: float):
-	print("stat upgrading value: ", Building.BuildingType.find_key(b_type), ": ", value )
+	#print("stat upgrading value: ", Building.BuildingType.find_key(b_type), ": ", value )
 	match b_type:
 		Building.BuildingType.Attack:
 			ant_damage += value;

@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 	if ants.size() > 0 && ants.front().pos > get_parent().get_node("TermiteHole").position.x:
 		ants.pop_front()
 		
-	var closest_termite = get_parent().get_node("TermiteHole").termites.front()
+	var closest_termite = get_parent().get_node("TermiteHole").termites.front() if get_parent().get_node("TermiteHole").termites.size() >0 else null
 	if closest_termite != null && ants.front() != null && ants.front().pos >= closest_termite.pos:
 		closest_termite.hp -= ants.front().damage * delta;
 		ants.front().sub_pos -= Global.ant_speed*delta;
@@ -39,6 +39,7 @@ func _process(delta: float) -> void:
 
 	var ant_hps: Array[float] = []
 	var dead_ants: Array[Ant] = []
+	
 	for ant in ants:
 		if(ant.hp <= 0):
 			dead_ants.append(ant);

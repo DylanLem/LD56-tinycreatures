@@ -61,7 +61,8 @@ func disable() -> void:
 	
 	enabled = false
 	
-	Global.update_stat(self.type, -multiplier)
+	calculate_multiplier()
+	Global.update_stat(self.type, 1 - multiplier)
 	
 	for cell in cells:
 		cell.disabled = true
@@ -70,7 +71,9 @@ func disable() -> void:
 
 
 func enable() -> void:
-	if not enabled: Global.update_stat(self.type, multiplier)
+	if not enabled:
+		calculate_multiplier()
+		Global.update_stat(self.type, multiplier)
 	
 	enabled = true
 	
@@ -115,6 +118,12 @@ func restore_links() -> void:
 
 
 func delete() -> void:
+	
+	if enabled:
+		calculate_multiplier()
+		Global.update_stat(self.type, 1 - multiplier)
+	
 	erase_links()
+	
 	for cell in cells:
 		cell.clear()

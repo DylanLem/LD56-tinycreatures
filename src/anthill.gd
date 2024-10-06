@@ -72,6 +72,8 @@ func spawn_ant():
 	ant.pos = $Spawnpoint.position.x + self.position.x;
 	ant.sub_pos = ant.pos;
 	ants.append(ant);
+	print(get_parent())
+	print(get_parent().get_node("Creatures"))
 	get_parent().get_node("Creatures").material.set_shader_parameter("ant_max_hp", Global.ant_defense)
 	reset_timer();
 	#ANTSS!!!!!! (ANT = Annihilator of Nonfriendly Termites)

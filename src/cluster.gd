@@ -8,7 +8,7 @@ var multiplier: float = 1.0;
 
 var prev_multiplier: float = 1.0;
 
-var cell_val: float = 0.01;
+var cell_val: float = 0.005;
 
 var scaling:float =  1.5;
 var soft_cap:float = 2.0;

@@ -24,7 +24,8 @@ func _process(delta: float) -> void:
 	
 	
 	if ants.size() > 0 && ants.front().pos > get_parent().get_node("TermiteHole").position.x:
-		get_tree().change_scene_to_file("res://level_transition.tscn");
+		print("YEAH BABY!")
+		get_tree().change_scene_to_file("res://scenes/level_transition.tscn");
 		ants.pop_front()
 		
 	var closest_termite = get_parent().get_node("TermiteHole").termites.front() if get_parent().get_node("TermiteHole").termites.size() >0 else null
@@ -73,8 +74,8 @@ func spawn_ant():
 	ant.pos = $Spawnpoint.position.x + self.position.x;
 	ant.sub_pos = ant.pos;
 	ants.append(ant);
-	print(get_parent())
-	print(get_parent().get_node("Creatures"))
+	#print(get_parent())
+	#print(get_parent().get_node("Creatures"))
 	get_parent().get_node("Creatures").material.set_shader_parameter("ant_max_hp", Global.ant_defense)
 	reset_timer();
 	#ANTSS!!!!!! (ANT = Annihilator of Nonfriendly Termites)

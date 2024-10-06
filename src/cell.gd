@@ -110,13 +110,13 @@ func on_board_placement():
 			for matched in matching_neighbours:
 				
 				if(matched.cluster == null) :
-					print("null cluster")
+					#print("null cluster")
 					matched.cluster = clussy;
 					clussy.cells.append(matched)
 					
 					
 				elif (matched.cluster == self.cluster):
-					print("same cluster")
+					#print("same cluster")
 					samecluster = true;
 					continue;
 					

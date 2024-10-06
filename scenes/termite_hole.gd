@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 	
 	
 	if termites.size()>0 && termites.front().pos < get_parent().get_node("Anthill").position.x :
-		get_tree().change_scene_to_file("res://defeat_screen.tscn")
+		get_tree().change_scene_to_file("res://scenes/defeat_screen.tscn")
 		termites.pop_front()
 		
 	var closest_ant = get_parent().get_node("Anthill").ants.front() if get_parent().get_node("Anthill").ants.size() > 0 else null

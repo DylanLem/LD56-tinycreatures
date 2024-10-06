@@ -25,14 +25,14 @@ func assimilate_cluster(cluster: Cluster):
 	if(cluster.type != self.type):
 		print("attempted to merge clusters of different type: ", self.type, " to ", cluster.type)
 	
-	print("I am size before: ",  self.cells.size())
+	#print("I am size before: ",  self.cells.size())
 	for cell in cluster.cells:
 		cell.cluster = self;
 		if(! self.cells.has(cell)):
-			print("mergin clussy")
+			#print("mergin clussy")
 			self.cells.append(cell)
 	#cluster.cells.clear();
-	print("I am size after: ", self.cells.size())
+	#print("I am size after: ", self.cells.size())
 	pass;
 
 func calculate_multiplier():
@@ -44,7 +44,7 @@ func calculate_multiplier():
 		final = soft_cap + excess;
 		
 	multiplier = final;
-	print("multi is now: " , multiplier, " for " , Building.BuildingType.find_key(type))
+	#print("multi is now: " , multiplier, " for " , Building.BuildingType.find_key(type))
 
 func update_cluster():
 	prev_multiplier = multiplier;

@@ -1,6 +1,6 @@
 extends Sprite2D
 
-var ant_cost: int = 5;
+var ant_cost: int = 10;
 
 #each "ant" is denoted by a single integer point which is its x-position;
 var ants: Array[Ant];
@@ -24,22 +24,23 @@ func _process(delta: float) -> void:
 	
 	
 	if ants.size() > 0 && ants.front().pos > get_parent().get_node("TermiteHole").position.x:
+		get_tree().change_scene_to_file("res://level_transition.tscn");
 		ants.pop_front()
 		
 	var closest_termite = get_parent().get_node("TermiteHole").termites.front() if get_parent().get_node("TermiteHole").termites.size() >0 else null
 	if closest_termite != null && ants.front() != null && ants.front().pos >= closest_termite.pos -1:
 		closest_termite.hp -= ants.front().damage * delta;
-		ants.front().sub_pos -= Global.ant_speed*delta;
+		ants.front().sub_pos -= (Global.ant_speed*((log(Global.efficiency)+1)/ log(2)))*delta;
 		ants.front().pos = floor(ants.front().sub_pos);
 		
 	for ant in ants:
 		var next_ant_index = ants.find(ant) - 1;
 		if(next_ant_index >=0):
 			if ants[next_ant_index].pos > ant.pos+1:
-				ant.sub_pos += Global.ant_speed*delta;
+				ant.sub_pos += (Global.ant_speed*((log(Global.efficiency)+1)/ log(2)))*delta;
 				ant.pos = floor(ant.sub_pos);
 		else:
-			ant.sub_pos += Global.ant_speed*delta;
+			ant.sub_pos += (Global.ant_speed*((log(Global.efficiency)+1)/ log(2)))*delta;
 			ant.pos = floor(ant.sub_pos);
 		
 		ant_pos.append(ant.pos)
@@ -63,7 +64,7 @@ func _process(delta: float) -> void:
 	pass
 
 func reset_timer():
-	spawn_timer.wait_time = float(ant_cost/Global.ant_production)
+	spawn_timer.wait_time = float((ant_cost/Global.ant_production)/((log(Global.efficiency)+1)/ log(2)))
 	spawn_timer.start();
 	
 	

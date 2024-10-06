@@ -9,7 +9,7 @@ var spawn_timer: Timer;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	spawn_timer = Timer.new();
-	spawn_timer.wait_time = float(1./Global.termite_production)
+	spawn_timer.wait_time = float(1./(Global.termite_production + (float(Global.current_level) * 0.25)))
 	spawn_timer.timeout.connect(spawn_termite);
 	add_child(spawn_timer)
 	spawn_termite()
@@ -25,6 +25,7 @@ func _process(delta: float) -> void:
 	
 	
 	if termites.size()>0 && termites.front().pos < get_parent().get_node("Anthill").position.x:
+		get_tree().change_scene_to_file("res://defeat_screen.tscn")
 		termites.pop_front()
 		
 	var closest_ant = get_parent().get_node("Anthill").ants.front() if get_parent().get_node("Anthill").ants.size() > 0 else null

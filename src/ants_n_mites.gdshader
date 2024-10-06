@@ -21,15 +21,15 @@ void fragment() {
 				COLOR.rgb *= ant_hp[i]/ant_max_hp;
 			}
 		}
-		
+
 		if(termites[i] != 0){
 			if(termites[i] == int(UV.x * float(textureSize(TEXTURE,0).x)) ){
 				COLOR.rgba = vec4(0,1,0,1);
 				COLOR.rgb *= termite_hp[i]/termite_max_hp;
 			}
 		}
-		
+
 	}
-	
+
 		// Called for every pixel the material is visible on.
 }

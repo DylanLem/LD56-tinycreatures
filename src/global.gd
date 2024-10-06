@@ -36,6 +36,8 @@ var colour_links: Array[Vector2];
 var colour_link_colours: Array[Color];
 
 
+var current_level = 1;
+
 
 func _ready() -> void:
 	calculate_place_building_cost()
@@ -96,8 +98,8 @@ func increment_buildings_skipped():
 
 
 func calculate_place_building_cost():
-	place_building_cost = clamp(floor(building_placed * 0.4), 1, INF)
+	place_building_cost = clamp(floor(building_placed * 0.4 /(((log(Global.efficiency)+1)/ log(2))*2)), 1, INF)
 
 
 func calculate_skip_building_cost():
-	skip_building_cost = clamp(floor(buildings_skipped * 0.275), 0, INF)
+	skip_building_cost = clamp(floor(buildings_skipped * 0.275/(((log(Global.efficiency)+1)/ log(2))*2)), 0, INF)

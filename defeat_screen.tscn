@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpg80j5p61ki5"]
+
+[ext_resource type="Texture2D" uid="uid://dnay1ptw5fy2u" path="res://sprites/defeat_screen.png" id="1_pooy4"]
+[ext_resource type="Script" path="res://defeat_screen.gd" id="2_3gfwg"]
+[ext_resource type="FontFile" uid="uid://3e4201c634q5" path="res://furphyTiny.ttf" id="3_tk4g0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4emk"]
+bg_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
+
+[node name="DefeatScreen" type="Sprite2D"]
+position = Vector2(75, 66)
+texture = ExtResource("1_pooy4")
+script = ExtResource("2_3gfwg")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -53.0
+offset_right = 40.0
+offset_bottom = -36.0
+theme_override_colors/font_color = Color(0.972549, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_tk4g0")
+text = "WASTED"
+
+[node name="Button" type="Button" parent="."]
+offset_left = -20.0
+offset_top = 33.0
+offset_right = 17.0
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("3_tk4g0")
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_c4emk")
+text = "Retry?"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

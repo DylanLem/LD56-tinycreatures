@@ -26,7 +26,7 @@ func _ready() -> void:
 			column.append(cell)
 		self.contents.append(column)
 	
-	root_cell = contents[0][2]
+	root_cell = contents[0][0]
 	root_cell.type = Building.BuildingType.Default
 
 
@@ -39,6 +39,7 @@ func update(delta: float) -> void:
 		for cell in row:
 			cell.highlighted = false
 			cell.show_x = false
+			cell.show_darken = false
 	
 	#if mouse_grid_pos.x >= 0 and mouse_grid_pos.x < columns and \
 		#mouse_grid_pos.y >= 0 and mouse_grid_pos.y < rows:
@@ -70,6 +71,17 @@ func _draw() -> void:
 		for col in range(contents[0].size()):
 			var cell: Cell = contents[row][col]
 			
+			var darker = Color.from_hsv(0,0,0,0.2)
+			draw_rect(
+				Rect2i(
+					col*(Global.cell_size+1)+1,
+					row*(Global.cell_size+1)+1,
+					1,
+					1
+				),
+				darker
+			)
+			
 			var rect = Rect2i(
 				col*(Global.cell_size+1),
 				row*(Global.cell_size+1),
@@ -79,8 +91,8 @@ func _draw() -> void:
 			
 			draw_rect(rect, cell.get_draw_color())
 			
-			if cell.disabled:
-				var overlay = Color.from_hsv(0, 0, 0, 0.5)
+			if cell.disabled or cell.show_darken:
+				var overlay = Color.from_hsv(0, 0, 0, 0.65)
 				draw_rect(rect, overlay)
 			
 			if cell.show_x:

@@ -10,6 +10,7 @@ var highlighted: bool = false
 var highlight_type: Building.BuildingType = Building.BuildingType.None
 
 var show_x: bool = false
+var show_darken: bool = false
 var disabled: bool = false
 
 var grid: Grid;

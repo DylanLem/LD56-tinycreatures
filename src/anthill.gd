@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 		ants.pop_front()
 		
 	var closest_termite = get_parent().get_node("TermiteHole").termites.front() if get_parent().get_node("TermiteHole").termites.size() >0 else null
-	if closest_termite != null && ants.front() != null && ants.front().pos >= closest_termite.pos -1:
+	if closest_termite != null && ants.size() > 0 && ants.front().pos >= closest_termite.pos -1:
 		closest_termite.hp -= ants.front().damage * delta;
 		ants.front().sub_pos -= (Global.ant_speed*((log(Global.efficiency)+1)/ log(2)))*delta;
 		ants.front().pos = floor(ants.front().sub_pos);

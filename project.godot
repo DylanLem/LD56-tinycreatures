@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="Ludum Dare 56"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/splash_screen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -21,11 +22,11 @@ Global="*res://src/global.gd"
 
 [display]
 
-window/size/viewport_width=128
-window/size/viewport_height=128
+window/size/viewport_width=160
+window/size/viewport_height=160
 window/size/resizable=false
-window/size/window_width_override=768
-window/size/window_height_override=768
+window/size/window_width_override=960
+window/size/window_height_override=960
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 

@@ -21,14 +21,33 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var parent: Node2D = get_parent();
 	var ant_pos: Array;
+	
+	
+	if ants.size() > 0 && ants.front().pos > get_parent().get_node("TermiteHole").position.x:
+		ants.pop_front()
+		
+	var closest_termite = get_parent().get_node("TermiteHole").termites.front()
+	if closest_termite != null && ants.front().pos >= closest_termite.pos:
+		closest_termite.hp -= ants.front().damage * delta;
+		ants.front().sub_pos -= Global.ant_speed*delta;
+		ants.front().pos = floor(ants.front().sub_pos);
+		
 	for ant in ants:
 		ant_pos.append(ant.pos)
 		ant.sub_pos += Global.ant_speed*delta;
 		ant.pos = floor(ant.sub_pos);
-	
-	if ants.front().pos > get_parent().get_node("TermiteHole").position.x:
-		ants.pop_front()
 
+	var ant_hps: Array[float] = []
+	var dead_ants: Array[Ant] = []
+	for ant in ants:
+		if(ant.hp <= 0):
+			dead_ants.append(ant);
+		else:
+			ant_hps.append(ant.hp)
+	for dead_ant in dead_ants:
+		ants.erase(dead_ant);
+	
+	parent.get_node("Creatures").material.set_shader_parameter("ant_hp", ant_hps)
 	parent.get_node("Creatures").material.set_shader_parameter("ants",ant_pos)
 	pass
 
@@ -38,10 +57,11 @@ func reset_timer():
 	
 	
 func spawn_ant():
-	var ant = Ant.new();
+	var ant = Ant.new(true);
 	ant.pos = $Spawnpoint.position.x + self.position.x;
 	ant.sub_pos = ant.pos;
 	ants.append(ant);
+	get_parent().get_node("Creatures").material.set_shader_parameter("ant_max_hp", Global.ant_defense)
 	reset_timer();
 	#ANTSS!!!!!! (ANT = Annihilator of Nonfriendly Termites)
 	

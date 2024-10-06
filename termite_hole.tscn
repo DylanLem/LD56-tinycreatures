@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://co3f4pijnhgun"]
+
+[ext_resource type="Texture2D" uid="uid://cme5t3dwepnwm" path="res://sprites/termite_hole.png" id="1_eyw71"]
+[ext_resource type="Script" path="res://scenes/termite_hole.gd" id="2_2n2ve"]
+
+[node name="TermiteHole" type="Sprite2D"]
+position = Vector2(115, 56)
+texture = ExtResource("1_eyw71")
+script = ExtResource("2_2n2ve")
+
+[node name="Spawnpoint" type="Node2D" parent="."]
+position = Vector2(0, 7)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://dohup4yre51w"]
+[gd_scene load_steps=31 format=3 uid="uid://dohup4yre51w"]
 
 [ext_resource type="Texture2D" uid="uid://dr8ly1t0qqs7w" path="res://sprites/template-splashscreen.png" id="1_3qmwl"]
 [ext_resource type="Script" path="res://scenes/splash_screen.gd" id="2_q2gcv"]
 [ext_resource type="Texture2D" uid="uid://c8upta11nexky" path="res://sprites/gamelad_container.png" id="3_ttmh7"]
+[ext_resource type="AudioStream" uid="uid://dtkddvcttsnha" path="res://sfx/Blurb.wav" id="4_7ix63"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a6m1g"]
 atlas = ExtResource("1_3qmwl")
@@ -181,6 +182,33 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wacq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wacq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wacq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wacq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wacq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wacq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wacq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wacq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wacq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wacq0")
 }],
 "loop": false,
 "name": &"default",
@@ -195,5 +223,11 @@ script = ExtResource("2_q2gcv")
 
 [node name="GameladContainer" type="Sprite2D" parent="."]
 texture = ExtResource("3_ttmh7")
+
+[node name="Blurb" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-173, 24)
+stream = ExtResource("4_7ix63")
+volume_db = -9.0
+autoplay = true
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

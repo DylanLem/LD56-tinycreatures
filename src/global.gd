@@ -9,6 +9,10 @@ var resource_production: float = 0.5;
 
 var ant_damage: float = 1.0;
 var ant_defense: float = 1.0;
+var termite_damage: float = 1.0;
+var termite_defense: float = 1.0;
+
+
 var efficiency: float = 1.0;
 
 
@@ -16,7 +20,7 @@ var ant_production: float = 1.0;
 var termite_production: float = 1.0;
 
 var ant_speed: float = 2.0;
-var termite_speed: float = 1.0;
+var termite_speed: float = -2.0;
 
 var building_placed: int = 0
 var buildings_skipped: int = 0

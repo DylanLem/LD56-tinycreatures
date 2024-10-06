@@ -2,15 +2,17 @@ class_name Ant extends Node
 
 var pos: int;
 var sub_pos: float;
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+
+var hp: float;
+var damage: float;
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	
-	sub_pos += Global.ant_speed*delta;
-	pos = floor(sub_pos);
-	
+func _init(ant: bool):
+	if(ant):
+		self.hp = Global.ant_defense
+		self.damage = Global.ant_damage
+	else:
+		self.hp = Global.termite_defense
+		self.damage = Global.termite_damage
+		
 	pass

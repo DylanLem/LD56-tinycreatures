@@ -31,12 +31,6 @@ static var shapes = [
 		[1,1,2],
 	],
 	[
-		[1,2,1],
-	],
-	[
-		[1,2,3],
-	],
-	[
 		[1,1],
 		[1,1],
 	],
@@ -74,9 +68,9 @@ static var shapes = [
 		[1,0,0],
 	],
 	[
-		[1,1,2],
+		[1,2,2],
 		[1,2,0],
-		[2,0,0],
+		[1,0,0],
 	],
 	[
 		[0,0,1],
@@ -85,18 +79,18 @@ static var shapes = [
 	],
 	[
 		[0,0,2],
-		[2,0,1],
-		[1,1,1],
-	],
-	[
-		[1,0,0],
-		[1,0,0],
-		[1,1,1],
-	],
-	[
-		[2,0,0],
-		[1,0,0],
+		[1,0,2],
 		[1,1,2],
+	],
+	[
+		[1,0,0],
+		[1,0,0],
+		[1,1,1],
+	],
+	[
+		[1,0,0],
+		[1,0,0],
+		[1,2,2],
 	],
 ]
 
@@ -118,11 +112,11 @@ func get_n_cols() -> int:
 
 
 func get_width() -> int:
-	return get_n_cols() * 4 - 1
+	return get_n_cols() * (Global.cell_size+1) - 1
 
 
 func get_height() -> int:
-	return get_n_rows() * 4 - 1
+	return get_n_rows() * (Global.cell_size+1) - 1
 
 
 func rotate_clockwise() -> void:
@@ -164,7 +158,12 @@ static func get_random_shape():
 
 
 static func get_random_buildingtype() -> BuildingType:
-	return randi_range(1, BuildingType.values().max())
+	var valid_buildingtypes = BuildingType.values()
+	valid_buildingtypes.erase(BuildingType.Default)
+	valid_buildingtypes.erase(BuildingType.Invalid)
+	valid_buildingtypes.erase(BuildingType.None)
+	#valid_buildingtypes.erase(BuildingType.Defense)
+	return valid_buildingtypes.pick_random()
 
 
 func draw():

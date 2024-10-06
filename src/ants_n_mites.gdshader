@@ -9,7 +9,7 @@ uniform float ant_max_hp;
 uniform float termite_max_hp;
 
 
-const int y_val = 64;
+const int y_val = 24;
 
 
 void fragment() {

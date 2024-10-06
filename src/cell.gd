@@ -9,7 +9,7 @@ var type: Building.BuildingType = Building.BuildingType.None;
 var highlighted: bool = false
 var highlight_type: Building.BuildingType = Building.BuildingType.None
 
-var show_deny_placing: bool = false
+var show_x: bool = false
 
 var grid: Grid;
 var cluster: Cluster;
@@ -54,17 +54,12 @@ static func get_color(type: Building.BuildingType) -> Color:
 	
 	
 func on_board_placement():
-	var neighbours = [grid.get_neighbour(self, Grid.Direction.North), 
-					  grid.get_neighbour(self, Grid.Direction.East),
-					  grid.get_neighbour(self, Grid.Direction.South),
-					  grid.get_neighbour(self, Grid.Direction.West)]
+	var neighbours = get_neighbours()
 	
 	var matching_neighbours = [];		
 	
 	
 	for neighbour in neighbours:
-		if(neighbour == null):
-			continue;
 		if(neighbour.type == self.type):
 			var midpoint = Vector2((neighbour.column + self.column)/ 2., (neighbour.row + self.row) /2.)
 			if(! Global.colour_links.has(midpoint)):
@@ -158,3 +153,9 @@ func get_neighbours() -> Array[Cell]:
 
 func apply_multi() -> void:
 	pass;
+
+
+
+func clear() -> void:
+	type = Building.BuildingType.None
+	cluster = null

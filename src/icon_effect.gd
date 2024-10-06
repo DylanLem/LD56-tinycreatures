@@ -1,12 +1,12 @@
 class_name IconEffect extends Sprite2D
 
-var life_time:float =  1.5;
+var life_time:float =  2;
 
-var timer:Timer;
+var timer: Timer;
 
-var speed = 3.0;
+var speed = 2.8;
 var trajectory: Vector2;
-var spawn_offset:int;
+var spawn_offset: int = 7;
 
 var anthill;
 
@@ -29,13 +29,13 @@ static var sprites: Array[Texture] = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	trajectory = Vector2(randf_range(-0.5,0.5), -speed);
-	spawn_offset = randi_range(-5,5);
+	trajectory = Vector2(randf_range(-0.5, 0.5), -speed);
 	
 	anthill = get_parent().get_node("Anthill");
 	
-	self.position = anthill.position;
-	self.position.x += spawn_offset;
+	self.position = anthill.position - Vector2(0, 4);
+	self.position += Vector2(randi_range(-spawn_offset, spawn_offset),
+		randi_range(-spawn_offset, spawn_offset));
 	self.sub_position = self.position;
 	
 	timer = Timer.new();
@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
 	sub_position += trajectory*delta;
 	
 	self.position = Vector2(int(sub_position.x),int(sub_position.y));
-	self.modulate.a = timer.time_left/ self.life_time;
+	self.modulate.a = ((timer.time_left + 1) / (self.life_time));
 	
 	pass
 	

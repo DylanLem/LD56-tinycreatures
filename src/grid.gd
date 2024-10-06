@@ -35,7 +35,7 @@ func update(delta: float) -> void:
 	for row in contents:
 		for cell in row:
 			cell.highlighted = false
-			cell.show_deny_placing = false
+			cell.show_x = false
 	
 	#if mouse_grid_pos.x >= 0 and mouse_grid_pos.x < columns and \
 		#mouse_grid_pos.y >= 0 and mouse_grid_pos.y < rows:
@@ -77,7 +77,7 @@ func _draw() -> void:
 				cell.get_draw_color()
 			)
 			
-			if cell.show_deny_placing:
+			if cell.show_x:
 				draw_texture(preload("res://sprites/x.png"), Vector2i(
 					col*(Global.cell_size+1)-1, row*(Global.cell_size+1)-1
 					))

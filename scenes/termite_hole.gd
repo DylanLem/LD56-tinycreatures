@@ -28,7 +28,8 @@ func _process(delta: float) -> void:
 		termites.pop_front()
 		
 	var closest_ant = get_parent().get_node("Anthill").ants.front()
-	if closest_ant != null && termites.front().pos <= closest_ant.pos:
+	if closest_ant != null && termites.front() != null && \
+	termites.front().pos <= closest_ant.pos:
 		closest_ant.hp -= termites.front().damage * delta; 
 		termites.front().sub_pos -= Global.termite_speed*delta;
 		termites.front().pos = floor(termites.front().sub_pos);

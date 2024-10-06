@@ -7,7 +7,7 @@ var type: Building.BuildingType = Building.BuildingType.None;
 var multiplier: float = 1.0;
 
 var prev_multiplier: float = 1.0;
-		
+
 var cell_val: float = 0.02;
 
 var scaling:float =  1.5;
@@ -27,7 +27,7 @@ func assimilate_cluster(cluster: Cluster):
 		cell.cluster = self;
 		if(! self.cells.has(cell)):
 			self.cells.append(cell)
-	cluster.cells.clear();
+	#cluster.cells.clear();
 	pass;
 
 func calculate_multiplier():

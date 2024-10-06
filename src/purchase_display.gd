@@ -18,7 +18,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	$BuildingCost.text = "buy:" + str(Global.place_building_cost)
+	$BuildingCost.text = "cost:" + str(Global.place_building_cost)
 	$SkipButton.text = "skip:" + str(Global.skip_building_cost)
 
 

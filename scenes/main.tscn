@@ -27,7 +27,7 @@ shader_parameter/termite_hp = null
 shader_parameter/ant_max_hp = null
 shader_parameter/termite_max_hp = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_koib1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5nwcm"]
 shader = ExtResource("3_sg7wr")
 shader_parameter/colour_links = null
 shader_parameter/colour_link_colours = null
@@ -53,14 +53,14 @@ script = ExtResource("3_lq4dq")
 cloud_sprites = Array[Texture]([ExtResource("4_q03ty"), ExtResource("5_hbego"), ExtResource("6_ow2ae")])
 
 [node name="Dirt" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_koib1")
+material = SubResource("ShaderMaterial_5nwcm")
 position = Vector2(64, 128)
 texture = ExtResource("4_8jiit")
 
 [node name="Grid" parent="." instance=ExtResource("5_vuwdq")]
-position = Vector2(6, 66)
-rows = 14
-columns = 13
+position = Vector2(2, 66)
+rows = 15
+columns = 15
 
 [node name="Label" type="Label" parent="."]
 offset_left = 3.0

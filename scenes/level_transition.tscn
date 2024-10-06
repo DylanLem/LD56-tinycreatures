@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://hgwwnvpfviui"]
+[gd_scene load_steps=6 format=3 uid="uid://hgwwnvpfviui"]
 
 [ext_resource type="Texture2D" uid="uid://dpaaam01tvr1m" path="res://sprites/level_complete.png" id="1_8wlqf"]
 [ext_resource type="Script" path="res://src/level_transition.gd" id="2_acmvw"]
 [ext_resource type="FontFile" uid="uid://3e4201c634q5" path="res://furphyTiny.ttf" id="3_6fyyq"]
+[ext_resource type="Texture2D" uid="uid://c8upta11nexky" path="res://sprites/gamelad_container.png" id="4_gvp8k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2usj"]
 
 [node name="LevelTransition" type="Sprite2D"]
-position = Vector2(64, 64)
+position = Vector2(80, 80)
 texture = ExtResource("1_8wlqf")
 script = ExtResource("2_acmvw")
 
@@ -50,5 +51,8 @@ theme_override_fonts/font = ExtResource("3_6fyyq")
 theme_override_font_sizes/font_size = 6
 theme_override_styles/normal = SubResource("StyleBoxFlat_i2usj")
 text = "next level"
+
+[node name="GameladContainer" type="Sprite2D" parent="."]
+texture = ExtResource("4_gvp8k")
 
 [connection signal="pressed" from="NextLevel" to="." method="_on_next_level_pressed"]

@@ -23,7 +23,7 @@ var efficiency: float = 1.0;
 var ant_production: float = 1.0;
 var termite_production: float = 1.0;
 
-var ant_speed: float = 2.0;
+var ant_speed: float = 1.0;
 var termite_speed: float = -2.0;
 
 var building_placed: int = 0

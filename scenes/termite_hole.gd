@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 	var is_stuck: Array[bool]
 	
 	
-	if termites.size()>0 && termites.front().pos < get_parent().get_node("Anthill").position.x:
+	if termites.size()>0 && termites.front().pos < get_parent().get_node("Anthill").position.x :
 		get_tree().change_scene_to_file("res://defeat_screen.tscn")
 		termites.pop_front()
 		
@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 	for termite in termites:
 		var next_termite_index = termites.find(termite) - 1;
 		if(next_termite_index >=0):
-			if termites[next_termite_index].pos < termite.pos-1:
+			if termites[next_termite_index].pos < termite.pos-(1 + (float(Global.current_level) * 0.25)):
 				termite.sub_pos += Global.termite_speed*delta;
 				termite.pos = floor(termite.sub_pos);
 		else:

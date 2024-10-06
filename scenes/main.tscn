@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cv64bg47j3ejo"]
+[gd_scene load_steps=21 format=3 uid="uid://cv64bg47j3ejo"]
 
 [ext_resource type="Shader" path="res://src/ants_n_mites.gdshader" id="1_7o0j6"]
 [ext_resource type="Script" path="res://src/main.gd" id="1_jg0v1"]
@@ -12,7 +12,6 @@
 [ext_resource type="FontFile" uid="uid://dn6s86gj5ug1j" path="res://furphyTinyMono.ttf" id="6_3d55t"]
 [ext_resource type="Texture2D" uid="uid://dgmjnfa0evt7l" path="res://sprites/cloud_tiny1.png" id="6_ow2ae"]
 [ext_resource type="PackedScene" uid="uid://dxj3ute5vy1k6" path="res://scenes/purchase_display.tscn" id="8_t1byr"]
-[ext_resource type="PackedScene" uid="uid://bx600irlpigjt" path="res://scenes/camera.tscn" id="9_5im6t"]
 [ext_resource type="PackedScene" uid="uid://cxqssc8w337tm" path="res://scenes/anthill.tscn" id="11_8thdj"]
 [ext_resource type="PackedScene" uid="uid://co3f4pijnhgun" path="res://scenes/termite_hole.tscn" id="15_3kuhg"]
 [ext_resource type="Texture2D" uid="uid://di521668g62mo" path="res://sprites/creature_line.png" id="16_71rld"]
@@ -77,9 +76,6 @@ text = "all termites will die
 
 [node name="PurchaseDisplay" parent="." instance=ExtResource("8_t1byr")]
 position = Vector2(92, 117)
-
-[node name="Camera" parent="." instance=ExtResource("9_5im6t")]
-position = Vector2(64, 64)
 
 [node name="TermiteHole" parent="." instance=ExtResource("15_3kuhg")]
 

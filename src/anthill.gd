@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 	for ant in ants:
 		var next_ant_index = ants.find(ant) - 1;
 		if(next_ant_index >=0):
-			if ants[next_ant_index].pos > ant.pos+1:
+			if ants[next_ant_index].pos > ant.pos+(1+(Global.ant_speed*((log(Global.efficiency)+1)/ log(2)))*delta):
 				ant.sub_pos += (Global.ant_speed*((log(Global.efficiency)+1)/ log(2)))*delta;
 				ant.pos = floor(ant.sub_pos);
 		else:

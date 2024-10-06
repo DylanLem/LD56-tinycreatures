@@ -3,15 +3,16 @@ class_name Main extends Node2D
 
 var mouse_pos: Vector2;
 var grid: Grid;
-var current_building: Building
+var current_building: Building = null
+var next_building: Building = null
 var delete_mode: bool = false
 
 
 func _ready() -> void:
 	grid = get_node("Grid");
 	
-	current_building = null
-	randomize_building()
+	current_building = get_random_building()
+	next_building = get_random_building()
 	
 	$PurchaseDisplay/ModeButton.pressed.connect(toggle_delete_mode)
 	
@@ -48,7 +49,9 @@ func _process(delta: float) -> void:
 					
 					if (cell.type != Building.BuildingType.None and \
 					building_cell != Building.BuildingType.None):
-						cell.show_x = true
+						#cell.show_x = true
+						cell.highlight(building_cell)
+						cell.show_darken = true
 						valid_position = false
 					elif building_cell != Building.BuildingType.None:
 						cell.highlight(building_cell)
@@ -72,7 +75,7 @@ func _process(delta: float) -> void:
 				if Input.is_action_just_pressed("left_click"):
 					if Global.resources >= Global.place_building_cost:
 						place_building(building_cells)
-						randomize_building()
+						advance_building()
 						grid.validate_clusters()
 					else:
 						$PurchaseDisplay/BuildingCost/ShakeTimer.start() 
@@ -114,8 +117,13 @@ func place_building(cells) -> void:
 	Global.increment_buildings_placed()
 
 
-func randomize_building() -> void:
-	current_building = Building.new()
+func advance_building() -> void:
+	current_building = next_building
+	next_building = get_random_building()
+
+
+func get_random_building() -> Building:
+	return Building.new()
 
 
 func _on_resource_production_timer_timeout() -> void:

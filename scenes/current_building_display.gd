@@ -6,7 +6,7 @@ func _process(delta: float) -> void:
 
 
 func _draw() -> void:
-	var building: Building = get_parent().get_parent().current_building
+	var building: Building = get_parent().get_parent().next_building
 	
 	for r in building.get_n_rows():
 		for c in building.get_n_cols():

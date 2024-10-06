@@ -19,11 +19,11 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var building_cost_label: Label = $BuildingCost
-	var skip_button: Button = $SkipButton
+	var skip_button_label: Label = $SkipButton/Label
 	var mode_button_label: Label = $ModeButton/Label
 	
 	building_cost_label.text = "cost:" + str(Global.place_building_cost)
-	skip_button.text = "skip:" + str(Global.skip_building_cost)
+	skip_button_label.text = "skip:" + str(Global.skip_building_cost)
 	mode_button_label.text = "cost:" + str(Global.delete_cluster_cost)
 	
 	if Global.resources < Global.place_building_cost:
@@ -32,9 +32,9 @@ func _process(delta: float) -> void:
 		building_cost_label.modulate = Color.GREEN
 	
 	if Global.resources < Global.skip_building_cost:
-		skip_button.modulate = Color.RED
+		skip_button_label.modulate = Color.RED
 	else:
-		skip_button.modulate = Color.GREEN
+		skip_button_label.modulate = Color.GREEN
 	
 	if Global.resources < Global.delete_cluster_cost:
 		mode_button_label.modulate = Color.RED
@@ -56,7 +56,7 @@ func _on_toggle_button_toggled(toggled_on: bool) -> void:
 
 func _on_skip_button_pressed() -> void:
 	if Global.resources >= Global.skip_building_cost:
-		game.randomize_building()
+		game.advance_building()
 		Global.increment_buildings_skipped()
 	else:
-		$SkipButton/ShakeTimer.start()
+		$SkipButton/Label/ShakeTimer.start()

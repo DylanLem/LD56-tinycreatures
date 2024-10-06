@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dt2jga4654yhq"]
+[gd_scene load_steps=6 format=3 uid="uid://dt2jga4654yhq"]
 
 [ext_resource type="Texture2D" uid="uid://dnay1ptw5fy2u" path="res://sprites/defeat_screen.png" id="1_ro0lt"]
 [ext_resource type="Script" path="res://src/defeat_screen.gd" id="2_sx7ck"]

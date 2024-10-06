@@ -42,10 +42,15 @@ var current_level = 1;
 
 
 func _ready() -> void:
+	initialize_values();
+
+func initialize_values():
+	building_placed = 0
+	buildings_skipped= 0
+	clusters_deleted = 0
 	calculate_place_building_cost()
 	calculate_skip_building_cost()
 	calculate_delete_clusters_cost()
-
 
 var stat_map: Dictionary = {
 	Building.BuildingType.Attack : ant_damage,

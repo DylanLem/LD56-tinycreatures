@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dgmjnfa0evt7l" path="res://sprites/cloud_tiny1.png" id="6_ow2ae"]
 [ext_resource type="PackedScene" uid="uid://dxj3ute5vy1k6" path="res://scenes/purchase_display.tscn" id="8_t1byr"]
 [ext_resource type="PackedScene" uid="uid://cxqssc8w337tm" path="res://scenes/anthill.tscn" id="11_8thdj"]
-[ext_resource type="PackedScene" path="res://scenes/termite_hole.tscn" id="15_3kuhg"]
+[ext_resource type="PackedScene" uid="uid://co3f4pijnhgun" path="res://scenes/termite_hole.tscn" id="15_3kuhg"]
 [ext_resource type="Texture2D" uid="uid://di521668g62mo" path="res://sprites/creature_line.png" id="16_71rld"]
 [ext_resource type="Texture2D" uid="uid://c8upta11nexky" path="res://sprites/gamelad_container.png" id="17_xr1a6"]
 [ext_resource type="AudioStream" uid="uid://dvj7vuwihnh33" path="res://sfx/Termite Extermination.wav" id="18_yalgf"]

@@ -1,9 +1,9 @@
 shader_type canvas_item;
 
-uniform int[128] ants;
-uniform int[128] termites;
-uniform float[128] ant_hp;
-uniform float[128] termite_hp;
+uniform int[256] ants;
+uniform int[256] termites;
+uniform float[256] ant_hp;
+uniform float[256] termite_hp;
 
 uniform float ant_max_hp;
 uniform float termite_max_hp;

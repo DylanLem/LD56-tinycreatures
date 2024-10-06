@@ -29,15 +29,23 @@ func _process(delta: float) -> void:
 		
 	var closest_ant = get_parent().get_node("Anthill").ants.front() if get_parent().get_node("Anthill").ants.size() > 0 else null
 	if closest_ant != null && termites.front() != null && \
-	termites.front().pos <= closest_ant.pos:
+	  termites.front().pos <= closest_ant.pos +1:
 		closest_ant.hp -= termites.front().damage * delta; 
 		termites.front().sub_pos -= Global.termite_speed*delta;
 		termites.front().pos = floor(termites.front().sub_pos);
 	
 	for termite in termites:
+		var next_termite_index = termites.find(termite) - 1;
+		if(next_termite_index >=0):
+			if termites[next_termite_index].pos < termite.pos-1:
+				termite.sub_pos += Global.termite_speed*delta;
+				termite.pos = floor(termite.sub_pos);
+		else:
+			termite.sub_pos += Global.termite_speed*delta;
+			termite.pos = floor(termite.sub_pos);
+			
 		termite_pos.append(termite.pos)
-		termite.sub_pos += Global.termite_speed*delta;
-		termite.pos = floor(termite.sub_pos);
+		
 	
 	var termite_hps: Array[float] = []
 	var dead_termites: Array[Ant] = []

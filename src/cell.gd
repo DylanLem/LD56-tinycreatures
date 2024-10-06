@@ -10,9 +10,15 @@ var highlighted: bool = false
 var highlight_type: Building.BuildingType = Building.BuildingType.None
 
 var show_x: bool = false
+var disabled: bool = false
 
 var grid: Grid;
 var cluster: Cluster;
+
+
+var dijk_dist: float = INF
+var dijk_prev: Cell = null
+var dijk_visited: bool = false
 
 
 func _ready() -> void:
@@ -151,8 +157,6 @@ func get_neighbours() -> Array[Cell]:
 	return result
 
 
-
-
 func apply_multi() -> void:
 	pass;
 
@@ -160,4 +164,6 @@ func apply_multi() -> void:
 
 func clear() -> void:
 	type = Building.BuildingType.None
+	#cluster.cells.erase(self)
 	cluster = null
+	disabled = false

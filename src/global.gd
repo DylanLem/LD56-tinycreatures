@@ -1,6 +1,10 @@
 extends Node
 
 
+const font_regular: Font = preload("res://furphyTiny.ttf")
+const font_mono: Font = preload("res://furphyTiny.ttf")
+
+
 const cell_size: int = 3
 
 var resources: float = 1000

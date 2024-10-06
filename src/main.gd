@@ -44,9 +44,8 @@ func _process(delta: float) -> void:
 					
 					var building_cell = current_building.cells[r][c]
 					
-					
-					if cell.type != Building.BuildingType.None and \
-					building_cell != Building.BuildingType.None:
+					if (cell.type != Building.BuildingType.None and \
+					building_cell != Building.BuildingType.None):
 						cell.show_x = true
 						valid_position = false
 					elif building_cell != Building.BuildingType.None:
@@ -57,7 +56,8 @@ func _process(delta: float) -> void:
 			for cell in building_cells:
 				if has_neighbour: break
 				for neighbour in cell.get_neighbours():
-					if neighbour.type != Building.BuildingType.None:
+					if neighbour.type != Building.BuildingType.None and \
+					not neighbour.disabled:
 						has_neighbour = true
 						break
 			
@@ -71,10 +71,21 @@ func _process(delta: float) -> void:
 					if Global.resources >= Global.place_building_cost:
 						place_building(building_cells)
 						randomize_building()
+						grid.validate_clusters()
 					
 				Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 		else:
 			var hovered_cell: Cell = grid.contents[mouse_pos.y][mouse_pos.x]
+			
+			#print(Building.BuildingType.find_key(hovered_cell.type))
+			var dijk_cell = grid.dijkstra(hovered_cell, grid.root_cell)
+			
+			#print(dijk_cell)
+			
+			while(dijk_cell != null):
+				#print("hi")
+				dijk_cell.highlight(Building.BuildingType.Invalid)
+				dijk_cell = dijk_cell.dijk_prev
 			
 			var hovered_cluster: Cluster = hovered_cell.cluster
 			
@@ -83,8 +94,8 @@ func _process(delta: float) -> void:
 					cell.show_x = true
 				
 				if Input.is_action_just_pressed("left_click"):
-					for cell: Cell in hovered_cluster.cells:
-						cell.clear()
+					hovered_cluster.delete()
+					grid.validate_clusters()
 			
 			pass
 	

@@ -79,6 +79,7 @@ offset_right = 30.0
 offset_bottom = 27.0
 mouse_default_cursor_shape = 2
 toggle_mode = true
+keep_pressed_outside = true
 texture_normal = ExtResource("6_w7vcp")
 texture_pressed = ExtResource("7_yjji2")
 texture_hover = ExtResource("6_w7vcp")

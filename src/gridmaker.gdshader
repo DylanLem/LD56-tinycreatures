@@ -1,7 +1,7 @@
 shader_type canvas_item;
 const int cell_buffer = 1;
 const int cell_size = 3;
-const int cell_padding = 4;
+const int cell_padding = 6;
 
 uniform vec2[512] colour_links;
 uniform vec3[512] colour_link_colours;

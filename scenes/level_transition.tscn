@@ -1,11 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://hgwwnvpfviui"]
+[gd_scene load_steps=8 format=3 uid="uid://hgwwnvpfviui"]
 
 [ext_resource type="Texture2D" uid="uid://dpaaam01tvr1m" path="res://sprites/level_complete.png" id="1_8wlqf"]
 [ext_resource type="Script" path="res://src/level_transition.gd" id="2_acmvw"]
 [ext_resource type="FontFile" uid="uid://3e4201c634q5" path="res://furphyTiny.ttf" id="3_6fyyq"]
 [ext_resource type="Texture2D" uid="uid://c8upta11nexky" path="res://sprites/gamelad_container.png" id="4_gvp8k"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j47ut"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7g8t1"]
+bg_color = Color(0.125911, 0.125911, 0.125911, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2usj"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="LevelTransition" type="Sprite2D"]
 position = Vector2(80, 80)
@@ -24,12 +30,14 @@ text = "LEVEL COMPLETE"
 horizontal_alignment = 1
 
 [node name="LevelNum" type="Label" parent="."]
-offset_left = -27.0
-offset_top = -41.0
-offset_right = 23.0
-offset_bottom = -24.0
+offset_left = -26.0
+offset_top = -45.0
+offset_right = 24.0
+offset_bottom = -28.0
 theme_override_font_sizes/font_size = 6
 text = "level"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Tooltip" type="Label" parent="."]
 offset_left = -62.0
@@ -47,8 +55,13 @@ offset_left = -27.0
 offset_top = -24.0
 offset_right = 26.0
 offset_bottom = -10.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3_6fyyq")
 theme_override_font_sizes/font_size = 6
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j47ut")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_7g8t1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7g8t1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7g8t1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_i2usj")
 text = "next level"
 

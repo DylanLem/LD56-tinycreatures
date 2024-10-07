@@ -97,6 +97,7 @@ text = "by LighthouseDev"
 [node name="MenuMusic" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-19, 66)
 stream = ExtResource("6_1dkgb")
+volume_db = -9.0
 autoplay = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dxj3ute5vy1k6"]
+[gd_scene load_steps=12 format=3 uid="uid://dxj3ute5vy1k6"]
 
 [ext_resource type="Texture2D" uid="uid://cf0jiveoyt86" path="res://sprites/purchase_display.png" id="1_5fbtt"]
 [ext_resource type="Script" path="res://src/purchase_display.gd" id="2_lli6v"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dmy8t8k4i8or7" path="res://sprites/x_button.png" id="6_w7vcp"]
 [ext_resource type="Texture2D" uid="uid://b2ncnh8q28x1o" path="res://sprites/x_button_pressed.png" id="7_yjji2"]
 [ext_resource type="Texture2D" uid="uid://clnvdsnybnfiy" path="res://sprites/resource_icon.png" id="9_fevty"]
+[ext_resource type="FontFile" uid="uid://3e4201c634q5" path="res://furphyTiny.ttf" id="10_qsqx5"]
 
 [node name="PurchaseDisplay" type="Sprite2D"]
 position = Vector2(66, 117)
@@ -61,10 +62,10 @@ ignore_texture_size = true
 
 [node name="Label" type="Label" parent="SkipButton"]
 layout_mode = 0
-offset_left = 16.0
+offset_left = 15.0
 offset_top = 2.0
 offset_right = 46.0
-offset_bottom = 11.0
+offset_bottom = 10.0
 theme_override_font_sizes/font_size = 6
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -96,10 +97,11 @@ vertical_alignment = 1
 [node name="ShakeTimer" parent="ModeButton/Label" instance=ExtResource("5_kr3qq")]
 
 [node name="NextLabel" type="Label" parent="."]
-offset_left = -15.0
+offset_left = -11.0
 offset_top = -27.0
 offset_right = 10.0
 offset_bottom = -21.0
+theme_override_fonts/font = ExtResource("10_qsqx5")
 theme_override_font_sizes/font_size = 6
 text = "next:"
 
@@ -108,12 +110,13 @@ offset_left = -7.0
 offset_top = -14.0
 offset_right = 23.0
 offset_bottom = -6.0
+theme_override_fonts/font = ExtResource("10_qsqx5")
 theme_override_font_sizes/font_size = 6
 text = "  cost"
 vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="CostLabel"]
-position = Vector2(4, 4)
+position = Vector2(4, 3)
 texture = ExtResource("9_fevty")
 
 [connection signal="toggled" from="ToggleButton" to="." method="_on_toggle_button_toggled"]

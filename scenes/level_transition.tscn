@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://hgwwnvpfviui"]
+[gd_scene load_steps=7 format=3 uid="uid://hgwwnvpfviui"]
 
 [ext_resource type="Texture2D" uid="uid://dpaaam01tvr1m" path="res://sprites/level_complete.png" id="1_8wlqf"]
 [ext_resource type="Script" path="res://src/level_transition.gd" id="2_acmvw"]
 [ext_resource type="FontFile" uid="uid://3e4201c634q5" path="res://furphyTiny.ttf" id="3_6fyyq"]
-[ext_resource type="Texture2D" uid="uid://c8upta11nexky" path="res://sprites/gamelad_container.png" id="4_gvp8k"]
+[ext_resource type="PackedScene" uid="uid://b84o2ks0onpad" path="res://scenes/gamelad_container.tscn" id="4_mljhw"]
+[ext_resource type="AudioStream" uid="uid://hlpu2wy1f76o" path="res://sfx/Youfuckingdiditholyshitfuckthemtermitesmanlikeshithosefuckerssuckass.wav" id="5_k8gql"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2usj"]
 
@@ -52,7 +53,11 @@ theme_override_font_sizes/font_size = 6
 theme_override_styles/normal = SubResource("StyleBoxFlat_i2usj")
 text = "next level"
 
-[node name="GameladContainer" type="Sprite2D" parent="."]
-texture = ExtResource("4_gvp8k")
+[node name="GameladContainer" parent="." instance=ExtResource("4_mljhw")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_k8gql")
+volume_db = -6.618
+autoplay = true
 
 [connection signal="pressed" from="NextLevel" to="." method="_on_next_level_pressed"]

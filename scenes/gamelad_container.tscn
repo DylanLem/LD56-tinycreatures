@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b84o2ks0onpad"]
+
+[ext_resource type="Texture2D" uid="uid://c8upta11nexky" path="res://sprites/gamelad_container.png" id="1_qxy4h"]
+[ext_resource type="Script" path="res://src/gamelad_container.gd" id="2_2qtwh"]
+
+[node name="GameladContainer" type="Sprite2D"]
+texture = ExtResource("1_qxy4h")
+script = ExtResource("2_2qtwh")
+
+[node name="Interior" type="Area2D" parent="."]
+
+[node name="InteriorCollider" type="CollisionPolygon2D" parent="Interior"]
+position = Vector2(-76, -72)
+polygon = PackedVector2Array(12, 8, 140, 8, 140, 136, 12, 136)
+
+[node name="Container" type="Area2D" parent="."]
+
+[node name="ContainerCollider" type="CollisionPolygon2D" parent="Container"]
+polygon = PackedVector2Array(-80, -72, -76, -72, -76, -76, -72, -76, -72, -80, 72, -80, 72, -76, 76, -76, 76, -72, 80, -72, 80, 80, -80, 80)
+
+[connection signal="mouse_entered" from="Interior" to="." method="_on_interior_mouse_entered"]
+[connection signal="mouse_exited" from="Interior" to="." method="_on_interior_mouse_exited"]
+[connection signal="mouse_entered" from="Container" to="." method="_on_container_mouse_entered"]
+[connection signal="mouse_exited" from="Container" to="." method="_on_container_mouse_exited"]

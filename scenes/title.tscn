@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://cu5sqdu85p8iu"]
 
 [ext_resource type="Script" path="res://src/title.gd" id="1_0c0kl"]
-[ext_resource type="Texture2D" uid="uid://c8upta11nexky" path="res://sprites/gamelad_container.png" id="2_3qudi"]
 [ext_resource type="FontFile" uid="uid://3e4201c634q5" path="res://furphyTiny.ttf" id="2_wgx60"]
 [ext_resource type="Texture2D" uid="uid://bu8lyyrhr80j4" path="res://sprites/ANT-title.png" id="2_wj6k0"]
 [ext_resource type="FontFile" uid="uid://b0tm0gblftqwb" path="res://furphyMediumBold.ttf" id="3_ob38l"]
+[ext_resource type="PackedScene" uid="uid://b84o2ks0onpad" path="res://scenes/gamelad_container.tscn" id="4_xfbnw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2fm1m"]
 atlas = ExtResource("2_wj6k0")
@@ -79,9 +79,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_e5a1c")
 text = "start game"
 flat = true
 
-[node name="GameladContainer" type="Sprite2D" parent="."]
+[node name="GameladContainer" parent="." instance=ExtResource("4_xfbnw")]
 position = Vector2(80, 80)
-texture = ExtResource("2_3qudi")
 
 [node name="Label2" type="Label" parent="."]
 offset_left = 54.0

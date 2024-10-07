@@ -1,13 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxj3ute5vy1k6"]
+[gd_scene load_steps=11 format=3 uid="uid://dxj3ute5vy1k6"]
 
 [ext_resource type="Texture2D" uid="uid://cf0jiveoyt86" path="res://sprites/purchase_display.png" id="1_5fbtt"]
 [ext_resource type="Script" path="res://src/purchase_display.gd" id="2_lli6v"]
 [ext_resource type="Texture2D" uid="uid://c3as4kjnnxxhf" path="res://sprites/down_arrow.png" id="3_tyxpg"]
 [ext_resource type="Script" path="res://scenes/current_building_display.gd" id="4_o5m31"]
 [ext_resource type="PackedScene" uid="uid://balv33oo74mnc" path="res://shake_timer.tscn" id="5_kr3qq"]
-[ext_resource type="Texture2D" uid="uid://bel7ki11xt0ou" path="res://sprites/trash.png" id="6_b0m2j"]
+[ext_resource type="Texture2D" uid="uid://djrwuxe5owpck" path="res://sprites/building_icon.png" id="6_1vp71"]
+[ext_resource type="Texture2D" uid="uid://tdymeejxjncw" path="res://sprites/skip_button.png" id="6_phd8o"]
 [ext_resource type="Texture2D" uid="uid://dmy8t8k4i8or7" path="res://sprites/x_button.png" id="6_w7vcp"]
 [ext_resource type="Texture2D" uid="uid://b2ncnh8q28x1o" path="res://sprites/x_button_pressed.png" id="7_yjji2"]
+[ext_resource type="Texture2D" uid="uid://clnvdsnybnfiy" path="res://sprites/resource_icon.png" id="9_fevty"]
 
 [node name="PurchaseDisplay" type="Sprite2D"]
 position = Vector2(66, 117)
@@ -15,6 +17,7 @@ texture = ExtResource("1_5fbtt")
 script = ExtResource("2_lli6v")
 
 [node name="ToggleButton" type="TextureButton" parent="."]
+visible = false
 offset_left = 31.0
 offset_top = -37.0
 offset_right = 36.0
@@ -32,45 +35,53 @@ offset_right = 30.0
 offset_bottom = -16.0
 script = ExtResource("4_o5m31")
 
-[node name="BuildingCost" type="Label" parent="."]
-offset_left = -1.0
-offset_top = -11.0
-offset_right = 31.0
-offset_bottom = -3.0
-theme_override_font_sizes/font_size = 6
-text = "cost:"
-horizontal_alignment = 2
+[node name="PlaceIcon" type="Sprite2D" parent="."]
+position = Vector2(-15, 0)
+texture = ExtResource("6_1vp71")
 
-[node name="ShakeTimer" parent="BuildingCost" instance=ExtResource("5_kr3qq")]
+[node name="Label" type="Label" parent="PlaceIcon"]
+offset_left = 9.0
+offset_top = -5.0
+offset_right = 39.0
+offset_bottom = 4.0
+theme_override_font_sizes/font_size = 6
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShakeTimer" parent="PlaceIcon/Label" instance=ExtResource("5_kr3qq")]
 
 [node name="SkipButton" type="TextureButton" parent="."]
-offset_left = -24.0
-offset_right = -11.0
-offset_bottom = 11.0
+offset_left = -21.0
+offset_top = 5.0
+offset_right = 29.0
+offset_bottom = 15.0
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("6_b0m2j")
-stretch_mode = 3
+texture_normal = ExtResource("6_phd8o")
+ignore_texture_size = true
 
 [node name="Label" type="Label" parent="SkipButton"]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 2.0
 offset_right = 46.0
 offset_bottom = 11.0
 theme_override_font_sizes/font_size = 6
-text = "cost:"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ShakeTimer" parent="SkipButton/Label" instance=ExtResource("5_kr3qq")]
 
 [node name="ModeButton" type="TextureButton" parent="."]
-offset_left = -24.0
-offset_top = 13.0
-offset_right = -11.0
-offset_bottom = 26.0
+offset_left = -22.0
+offset_top = 15.0
+offset_right = 30.0
+offset_bottom = 27.0
 mouse_default_cursor_shape = 2
 toggle_mode = true
 texture_normal = ExtResource("6_w7vcp")
 texture_pressed = ExtResource("7_yjji2")
 texture_hover = ExtResource("6_w7vcp")
+ignore_texture_size = true
 
 [node name="Label" type="Label" parent="ModeButton"]
 layout_mode = 0
@@ -79,17 +90,31 @@ offset_top = 2.0
 offset_right = 46.0
 offset_bottom = 11.0
 theme_override_font_sizes/font_size = 6
-text = "cost:"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ShakeTimer" parent="ModeButton/Label" instance=ExtResource("5_kr3qq")]
 
-[node name="Label" type="Label" parent="."]
+[node name="NextLabel" type="Label" parent="."]
 offset_left = -15.0
 offset_top = -27.0
 offset_right = 10.0
 offset_bottom = -21.0
 theme_override_font_sizes/font_size = 6
 text = "next:"
+
+[node name="CostLabel" type="Label" parent="."]
+offset_left = -7.0
+offset_top = -14.0
+offset_right = 23.0
+offset_bottom = -6.0
+theme_override_font_sizes/font_size = 6
+text = "  cost"
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="CostLabel"]
+position = Vector2(4, 4)
+texture = ExtResource("9_fevty")
 
 [connection signal="toggled" from="ToggleButton" to="." method="_on_toggle_button_toggled"]
 [connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]

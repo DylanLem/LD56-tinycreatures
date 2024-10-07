@@ -9,6 +9,8 @@ var delete_mode: bool = false
 
 
 func _ready() -> void:
+	Global.resources = Global.starting_resources
+	
 	grid = get_node("Grid");
 	
 	current_building = get_random_building()
@@ -78,7 +80,7 @@ func _process(delta: float) -> void:
 						advance_building()
 						grid.validate_clusters()
 					else:
-						$PurchaseDisplay/BuildingCost/ShakeTimer.start() 
+						$PurchaseDisplay/PlaceIcon/Label/ShakeTimer.start() 
 						pass
 					
 				Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
@@ -103,7 +105,7 @@ func _process(delta: float) -> void:
 			pass
 	
 	
-	$ResourcesLabel.text = "resources:" + str(int(Global.resources))
+	$ResourcesLabel.text = "  x" + str(int(Global.resources))
 
 
 func place_building(cells) -> void:

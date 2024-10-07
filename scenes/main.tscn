@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cv64bg47j3ejo"]
+[gd_scene load_steps=22 format=3 uid="uid://cv64bg47j3ejo"]
 
 [ext_resource type="Shader" path="res://src/ants_n_mites.gdshader" id="1_7o0j6"]
 [ext_resource type="Script" path="res://src/main.gd" id="1_jg0v1"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cxqssc8w337tm" path="res://scenes/anthill.tscn" id="11_8thdj"]
 [ext_resource type="PackedScene" path="res://scenes/termite_hole.tscn" id="15_3kuhg"]
 [ext_resource type="Texture2D" uid="uid://di521668g62mo" path="res://sprites/creature_line.png" id="16_71rld"]
+[ext_resource type="Texture2D" uid="uid://clnvdsnybnfiy" path="res://sprites/resource_icon.png" id="16_vyiga"]
 [ext_resource type="Texture2D" uid="uid://c8upta11nexky" path="res://sprites/gamelad_container.png" id="17_xr1a6"]
 [ext_resource type="AudioStream" uid="uid://dvj7vuwihnh33" path="res://sfx/Termite Extermination.wav" id="18_yalgf"]
 
@@ -75,7 +76,7 @@ text = "all termites will die
 [node name="Anthill" parent="." instance=ExtResource("11_8thdj")]
 
 [node name="PurchaseDisplay" parent="." instance=ExtResource("8_t1byr")]
-position = Vector2(92, 104)
+position = Vector2(92, 100)
 
 [node name="TermiteHole" parent="." instance=ExtResource("15_3kuhg")]
 
@@ -86,10 +87,16 @@ texture = ExtResource("16_71rld")
 centered = false
 
 [node name="ResourcesLabel" type="Label" parent="."]
-offset_top = 19.0
-offset_right = 40.0
-offset_bottom = 36.0
+offset_left = 2.0
+offset_top = 11.0
+offset_right = 76.0
+offset_bottom = 23.0
 theme_override_font_sizes/font_size = 6
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="ResourcesLabel"]
+position = Vector2(5, 5)
+texture = ExtResource("16_vyiga")
 
 [node name="ResourceProductionTimer" type="Timer" parent="."]
 autostart = true

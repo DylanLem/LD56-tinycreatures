@@ -18,13 +18,13 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	var building_cost_label: Label = $BuildingCost
+	var building_cost_label: Label = $PlaceIcon/Label
 	var skip_button_label: Label = $SkipButton/Label
 	var mode_button_label: Label = $ModeButton/Label
 	
-	building_cost_label.text = "cost:" + str(Global.place_building_cost)
-	skip_button_label.text = "skip:" + str(Global.skip_building_cost)
-	mode_button_label.text = "cost:" + str(Global.delete_cluster_cost)
+	building_cost_label.text = str(Global.place_building_cost)
+	skip_button_label.text = str(Global.skip_building_cost)
+	mode_button_label.text = str(Global.delete_cluster_cost)
 	
 	if Global.resources < Global.place_building_cost:
 		building_cost_label.modulate = Color.RED

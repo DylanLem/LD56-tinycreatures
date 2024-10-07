@@ -7,7 +7,8 @@ const font_mono: Font = preload("res://furphyTiny.ttf")
 
 const cell_size: int = 3
 
-var resources: float = 1
+var starting_resources: float = 1
+var resources: float = 0
 
 var resource_production: float = 0.5;
 

@@ -23,6 +23,7 @@ visible = false
 polygon = PackedVector2Array(-80, -72, -76, -72, -76, -76, -72, -76, -72, -80, 72, -80, 72, -76, 76, -76, 76, -72, 80, -72, 80, 80, -80, 80)
 
 [node name="PowerButton" type="TextureButton" parent="."]
+visible = false
 offset_left = 62.0
 offset_top = 64.0
 offset_right = 78.0

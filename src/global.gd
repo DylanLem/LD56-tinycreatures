@@ -47,6 +47,8 @@ func _ready() -> void:
 	initialize_values();
 
 func initialize_values():
+	resources = starting_resources
+	
 	building_placed = 0
 	buildings_skipped= 0
 	clusters_deleted = 0

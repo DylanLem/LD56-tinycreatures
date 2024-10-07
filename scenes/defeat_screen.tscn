@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dt2jga4654yhq"]
+[gd_scene load_steps=8 format=3 uid="uid://dt2jga4654yhq"]
 
 [ext_resource type="Texture2D" uid="uid://dnay1ptw5fy2u" path="res://sprites/defeat_screen.png" id="1_ro0lt"]
 [ext_resource type="Script" path="res://src/defeat_screen.gd" id="2_sx7ck"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://b84o2ks0onpad" path="res://scenes/gamelad_container.tscn" id="4_qwboj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_simqs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03sqa"]
+bg_color = Color(0.118581, 0.118581, 0.118581, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4emk"]
 bg_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
@@ -33,6 +36,9 @@ mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("3_aa736")
 theme_override_font_sizes/font_size = 6
 theme_override_styles/focus = SubResource("StyleBoxEmpty_simqs")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_03sqa")
+theme_override_styles/hover = SubResource("StyleBoxFlat_03sqa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_03sqa")
 theme_override_styles/normal = SubResource("StyleBoxFlat_c4emk")
 text = "Retry?"
 

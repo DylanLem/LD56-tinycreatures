@@ -180,6 +180,7 @@ static func get_random_buildingtype() -> BuildingType:
 	valid_buildingtypes.erase(BuildingType.Default)
 	valid_buildingtypes.erase(BuildingType.Invalid)
 	valid_buildingtypes.erase(BuildingType.None)
+	valid_buildingtypes.erase(BuildingType.Speed)
 	#valid_buildingtypes.erase(BuildingType.Defense)
 	return valid_buildingtypes.pick_random()
 

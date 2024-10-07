@@ -4,9 +4,9 @@ var cells: Array[Cell];
 
 var type: Building.BuildingType = Building.BuildingType.None;
 
-var multiplier: float = 1.0;
+var multiplier: float = 0;
 
-var prev_multiplier: float = 1.0;
+var prev_multiplier: float = 0;
 
 var cell_val: float = 0.005;
 

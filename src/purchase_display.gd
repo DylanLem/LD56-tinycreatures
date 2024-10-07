@@ -55,6 +55,9 @@ func _on_toggle_button_toggled(toggled_on: bool) -> void:
 
 
 func _on_skip_button_pressed() -> void:
+	get_parent().get_node("SoundEffects").stream = get_parent().sfx["skip"]
+	get_parent().get_node("SoundEffects").play()
+
 	if Global.resources >= Global.skip_building_cost:
 		game.advance_building()
 		Global.increment_buildings_skipped()

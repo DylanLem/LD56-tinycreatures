@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dnay1ptw5fy2u" path="res://sprites/defeat_screen.png" id="1_ro0lt"]
 [ext_resource type="Script" path="res://src/defeat_screen.gd" id="2_sx7ck"]
 [ext_resource type="FontFile" uid="uid://3e4201c634q5" path="res://furphyTiny.ttf" id="3_aa736"]
-[ext_resource type="Texture2D" uid="uid://c8upta11nexky" path="res://sprites/gamelad_container.png" id="4_vtmpx"]
+[ext_resource type="PackedScene" uid="uid://b84o2ks0onpad" path="res://scenes/gamelad_container.tscn" id="4_qwboj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_simqs"]
 
@@ -36,7 +36,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_simqs")
 theme_override_styles/normal = SubResource("StyleBoxFlat_c4emk")
 text = "Retry?"
 
-[node name="GameladContainer" type="Sprite2D" parent="."]
-texture = ExtResource("4_vtmpx")
+[node name="GameladContainer2" parent="." instance=ExtResource("4_qwboj")]
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -51,3 +51,8 @@ func _on_interior_mouse_exited() -> void:
 func _on_container_mouse_exited() -> void:
 	container_moused = false;
 	pass # Replace with function body.
+
+
+func _on_power_button_pressed() -> void:
+	get_tree().quit();
+	pass # Replace with function body.

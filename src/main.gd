@@ -7,6 +7,13 @@ var current_building: Building = null
 var next_building: Building = null
 var delete_mode: bool = false
 
+var sfx = {
+	"placement":preload("res://sfx/plop.wav"),
+	"skip":preload("res://sfx/Skip.wav"),
+	"delete":preload("res://sfx/delete.wav"),
+	"invalid":preload("res://sfx/No no.wav")
+}
+
 
 func _ready() -> void:
 	Global.initialize_values();
@@ -72,13 +79,21 @@ func _process(delta: float) -> void:
 					cell.show_darken = true
 					pass
 			
+			if (not has_neighbour or not valid_position) and Input.is_action_just_pressed("left_click"):
+				$SoundEffects.stream = sfx["invalid"]
+				$SoundEffects.play()
+				
 			if valid_position and has_neighbour:
 				if Input.is_action_just_pressed("left_click"):
 					if Global.resources >= Global.place_building_cost:
 						place_building(building_cells)
 						advance_building()
 						grid.validate_clusters()
+						$SoundEffects.stream = sfx["placement"]
+						$SoundEffects.play()
 					else:
+						$SoundEffects.stream = sfx["invalid"]
+						$SoundEffects.play()
 						$PurchaseDisplay/PlaceIcon/Label/ShakeTimer.start() 
 						pass
 					
@@ -95,10 +110,14 @@ func _process(delta: float) -> void:
 				
 				if Input.is_action_just_pressed("left_click"):
 					if Global.resources >= Global.delete_cluster_cost:
+						$SoundEffects.stream = sfx["delete"]
+						$SoundEffects.play()
 						hovered_cluster.delete()
 						grid.validate_clusters()
 						Global.increment_deleted_clusters()
 					else:
+						$SoundEffects.stream = sfx["invalid"]
+						$SoundEffects.play()
 						$PurchaseDisplay/ModeButton/Label/ShakeTimer.start()
 			
 			pass

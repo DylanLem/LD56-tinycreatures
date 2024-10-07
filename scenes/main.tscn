@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cv64bg47j3ejo"]
+[gd_scene load_steps=25 format=3 uid="uid://cv64bg47j3ejo"]
 
 [ext_resource type="Shader" path="res://src/ants_n_mites.gdshader" id="1_7o0j6"]
 [ext_resource type="Script" path="res://src/main.gd" id="1_jg0v1"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://clnvdsnybnfiy" path="res://sprites/resource_icon.png" id="16_vyiga"]
 [ext_resource type="Texture2D" uid="uid://c8upta11nexky" path="res://sprites/gamelad_container.png" id="17_xr1a6"]
 [ext_resource type="AudioStream" uid="uid://dvj7vuwihnh33" path="res://sfx/Termite Extermination.wav" id="18_yalgf"]
+[ext_resource type="Texture2D" uid="uid://chx6ppi5jqp7p" path="res://sprites/exclamation_0.png" id="19_jqpuk"]
+[ext_resource type="Texture2D" uid="uid://dy7uxx5o4wutc" path="res://sprites/exclamation_1.png" id="20_dg2m4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ywot6"]
 shader = ExtResource("1_7o0j6")
@@ -41,6 +43,20 @@ shader_parameter/ant_hp = null
 shader_parameter/termite_hp = null
 shader_parameter/ant_max_hp = null
 shader_parameter/termite_max_hp = null
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7w07h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_jqpuk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_dg2m4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Main" type="Node2D"]
 material = SubResource("ShaderMaterial_ywot6")
@@ -112,5 +128,13 @@ position = Vector2(-25, 104)
 stream = ExtResource("18_yalgf")
 volume_db = -16.0
 autoplay = true
+
+[node name="WarningSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+z_index = 10
+position = Vector2(30, 50)
+sprite_frames = SubResource("SpriteFrames_7w07h")
+frame = 1
+frame_progress = 0.0694386
 
 [connection signal="timeout" from="ResourceProductionTimer" to="." method="_on_resource_production_timer_timeout"]

@@ -14,7 +14,7 @@ config/name="Ant Conquest"
 run/main_scene="res://scenes/splash_screen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="res://sprites/resource_icon.png"
 
 [autoload]
 
@@ -32,6 +32,8 @@ window/size/window_height_override=800
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 window/per_pixel_transparency/allowed=true
+window/use_custom_user_dir=false
+window/icon="res://icon.svg"
 
 [editor_plugins]
 

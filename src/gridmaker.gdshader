@@ -12,12 +12,12 @@ void vertex() {
 
 void fragment() {
 	vec2 pixel_scale = 1./vec2(textureSize(TEXTURE,0));
-	
+
 	//if( (int(UV.x * float(textureSize(TEXTURE,0).x)) + 1) % 4 == 0  && (int(UV.y * float(textureSize(TEXTURE,0).y)) + 1) % 4 == 0
 		//&& UV.x <= 0.5 - pixel_scale.x && UV.y < 1. - pixel_scale.y){
 		//COLOR.r += 0.1;
 	//}
-	
+
 	for(int i = 0; i < 512; i++){
 		if(colour_links[i] != vec2(0)){
 			if(int(UV.x * vec2(textureSize(TEXTURE,0)).x) == int(colour_links[i].x * float(cell_size + cell_buffer)) + 3 + cell_padding &&
@@ -25,7 +25,7 @@ void fragment() {
 				COLOR.rgb = colour_link_colours[i];
 				COLOR.a = 1.;
 			}
-			
+
 		}
 	}
 	// Called for every pixel the material is visible on.

@@ -1,0 +1,204 @@
+[gd_scene load_steps=19 format=3 uid="uid://cx6qw10ufwuei"]
+
+[ext_resource type="Texture2D" uid="uid://dkukk83g0hwly" path="res://sprites/dirt.png" id="1_k1nj0"]
+[ext_resource type="Script" path="res://tutorial.gd" id="1_yfr5n"]
+[ext_resource type="FontFile" uid="uid://b0tm0gblftqwb" path="res://furphyMediumBold.ttf" id="2_t2l2o"]
+[ext_resource type="Texture2D" uid="uid://dy2o8q21s0y05" path="res://sprites/tutorial_pic.png" id="3_wgapd"]
+[ext_resource type="Texture2D" uid="uid://clnvdsnybnfiy" path="res://sprites/resource_icon.png" id="4_ixsld"]
+[ext_resource type="FontFile" uid="uid://3e4201c634q5" path="res://furphyTiny.ttf" id="5_jqmlv"]
+[ext_resource type="Texture2D" uid="uid://bjgrw6oer5lxd" path="res://sprites/shield_icon.png" id="5_siagd"]
+[ext_resource type="Texture2D" uid="uid://dqpdp0026ucso" path="res://sprites/efficiency_icon.png" id="6_4mu7j"]
+[ext_resource type="Texture2D" uid="uid://mislm642q5fg" path="res://sprites/attack_icon.png" id="7_ccltg"]
+[ext_resource type="Texture2D" uid="uid://dilqx77asyjgk" path="res://sprites/population_icon.png" id="8_drd3x"]
+[ext_resource type="PackedScene" uid="uid://b84o2ks0onpad" path="res://scenes/gamelad_container.tscn" id="11_rs3h3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_muupn"]
+bg_color = Color(1, 0.498039, 0.313726, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7r1l"]
+bg_color = Color(0.101961, 0.168627, 0.356863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7efy"]
+bg_color = Color(0.639216, 0.188235, 0.188235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_joqap"]
+bg_color = Color(0.768627, 0.792157, 0.694118, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xhw0r"]
+bg_color = Color(0.945098, 0.913725, 0.431373, 1)
+
+[sub_resource type="Theme" id="Theme_ypcr5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s1olm"]
+
+[node name="Tutorial" type="Node2D"]
+position = Vector2(0, 1)
+script = ExtResource("1_yfr5n")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(15, 13)
+scale = Vector2(0.80647, 0.817748)
+
+[node name="Dirt" type="Sprite2D" parent="Node2D"]
+position = Vector2(80, 79)
+scale = Vector2(1.25, 2.5)
+texture = ExtResource("1_k1nj0")
+
+[node name="Title" type="Label" parent="Node2D"]
+offset_left = 30.9993
+offset_top = 4.89148
+offset_right = 126.999
+offset_bottom = 17.8915
+theme_override_fonts/font = ExtResource("2_t2l2o")
+theme_override_font_sizes/font_size = 12
+text = "BOOT CAMP"
+
+[node name="TutorialPic" type="Sprite2D" parent="Node2D"]
+position = Vector2(38, 123)
+texture = ExtResource("3_wgapd")
+
+[node name="explain1" type="Label" parent="Node2D"]
+offset_left = 70.0
+offset_top = 101.0
+offset_right = 140.0
+offset_bottom = 131.0
+theme_override_font_sizes/font_size = 6
+text = "production is 
+more efficient
+in groups"
+
+[node name="Label" type="Label" parent="Node2D/explain1"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 27.0
+offset_right = 103.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 6
+text = "(like, way more)"
+
+[node name="ResourceIcon" type="Sprite2D" parent="Node2D"]
+position = Vector2(28, 25)
+texture = ExtResource("4_ixsld")
+
+[node name="Panel" type="Panel" parent="Node2D/ResourceIcon"]
+offset_left = -12.0
+offset_top = -1.0
+offset_right = -9.0
+offset_bottom = 2.0
+scale = Vector2(1.167, 1.167)
+theme_override_styles/panel = SubResource("StyleBoxFlat_muupn")
+
+[node name="Label" type="Label" parent="Node2D/ResourceIcon"]
+offset_left = 10.0
+offset_top = -3.0
+offset_right = 98.0
+offset_bottom = 3.0
+theme_override_fonts/font = ExtResource("5_jqmlv")
+theme_override_font_sizes/font_size = 6
+text = "- used for building"
+
+[node name="ShieldIcon" type="Sprite2D" parent="Node2D"]
+position = Vector2(28, 38)
+texture = ExtResource("5_siagd")
+
+[node name="Panel" type="Panel" parent="Node2D/ShieldIcon"]
+offset_left = -12.0
+offset_top = -1.0
+offset_right = -9.0
+offset_bottom = 2.0
+scale = Vector2(1.167, 1.167)
+theme_override_styles/panel = SubResource("StyleBoxFlat_b7r1l")
+
+[node name="Label" type="Label" parent="Node2D/ShieldIcon"]
+offset_left = 10.0
+offset_top = -2.0
+offset_right = 98.0
+offset_bottom = 4.0
+theme_override_fonts/font = ExtResource("5_jqmlv")
+theme_override_font_sizes/font_size = 6
+text = "- increases durability
+"
+
+[node name="AttackIcon" type="Sprite2D" parent="Node2D"]
+position = Vector2(28, 53)
+texture = ExtResource("7_ccltg")
+
+[node name="Panel" type="Panel" parent="Node2D/AttackIcon"]
+offset_left = -12.0
+offset_top = -3.0
+offset_right = -9.0
+scale = Vector2(1.167, 1.167)
+theme_override_styles/panel = SubResource("StyleBoxFlat_m7efy")
+
+[node name="Label" type="Label" parent="Node2D/AttackIcon"]
+offset_left = 10.5
+offset_top = -3.33333
+offset_right = 105.5
+offset_bottom = 2.66667
+theme_override_fonts/font = ExtResource("5_jqmlv")
+theme_override_font_sizes/font_size = 6
+text = "- increases strength"
+
+[node name="PopulationIcon" type="Sprite2D" parent="Node2D"]
+position = Vector2(28, 66)
+texture = ExtResource("8_drd3x")
+
+[node name="Panel" type="Panel" parent="Node2D/PopulationIcon"]
+offset_left = -12.0
+offset_top = -1.0
+offset_right = -9.0
+offset_bottom = 2.0
+scale = Vector2(1.167, 1.167)
+theme_override_styles/panel = SubResource("StyleBoxFlat_joqap")
+
+[node name="Label" type="Label" parent="Node2D/PopulationIcon"]
+offset_left = 10.0
+offset_top = -3.0
+offset_right = 90.0
+offset_bottom = 3.0
+theme_override_fonts/font = ExtResource("5_jqmlv")
+theme_override_font_sizes/font_size = 6
+text = "- rate of ant production"
+
+[node name="EfficiencyIcon" type="Sprite2D" parent="Node2D"]
+position = Vector2(28, 80)
+scale = Vector2(1.16667, 1.16667)
+texture = ExtResource("6_4mu7j")
+
+[node name="Panel" type="Panel" parent="Node2D/EfficiencyIcon"]
+offset_left = -10.2857
+offset_top = -0.857145
+offset_right = -7.28571
+offset_bottom = 2.14285
+theme_override_styles/panel = SubResource("StyleBoxFlat_xhw0r")
+
+[node name="Label" type="Label" parent="Node2D/EfficiencyIcon"]
+offset_left = 10.0
+offset_top = -3.0
+offset_right = 90.0
+offset_bottom = 3.0
+theme_override_fonts/font = ExtResource("5_jqmlv")
+theme_override_font_sizes/font_size = 6
+text = "- global efficiency"
+
+[node name="Button" type="Button" parent="Node2D"]
+offset_left = 94.2379
+offset_top = 140.63
+offset_right = 151.238
+offset_bottom = 157.63
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_ypcr5")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_pressed_color = Color(0.143862, 0.0943491, 0.0757381, 1)
+theme_override_colors/font_hover_color = Color(0.145098, 0.0941176, 0.0745098, 1)
+theme_override_colors/font_pressed_color = Color(0.533037, 0.533037, 0.533037, 1)
+theme_override_fonts/font = ExtResource("2_t2l2o")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s1olm")
+text = "RETURN"
+flat = true
+
+[node name="GameladContainer" parent="." instance=ExtResource("11_rs3h3")]
+position = Vector2(80, 79)
+
+[connection signal="pressed" from="Node2D/Button" to="." method="_on_button_pressed"]

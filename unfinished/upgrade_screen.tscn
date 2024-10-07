@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://ds0376qqkrsmb"]
+
+[ext_resource type="Texture2D" uid="uid://dkukk83g0hwly" path="res://sprites/dirt.png" id="1_1uh8f"]
+[ext_resource type="Texture2D" uid="uid://b67mys66e6hal" path="res://sprites/night_sky.png" id="2_wt2ex"]
+[ext_resource type="FontFile" uid="uid://3e4201c634q5" path="res://furphyTiny.ttf" id="3_3sysn"]
+[ext_resource type="PackedScene" uid="uid://b84o2ks0onpad" path="res://scenes/gamelad_container.tscn" id="4_0gxdm"]
+[ext_resource type="PackedScene" uid="uid://dub4mnd05vkr0" path="res://unfinished/upgrade_slot.tscn" id="4_otgjf"]
+[ext_resource type="PackedScene" uid="uid://joq7hokqwy4i" path="res://scenes/grid.tscn" id="5_5qdkr"]
+
+[node name="Sprite2D" type="Sprite2D"]
+
+[node name="Dirt" type="Sprite2D" parent="."]
+position = Vector2(80, 144)
+texture = ExtResource("1_1uh8f")
+
+[node name="NightSky" type="Sprite2D" parent="."]
+position = Vector2(80, 48)
+texture = ExtResource("2_wt2ex")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 20.0
+offset_right = 126.0
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("3_3sysn")
+theme_override_font_sizes/font_size = 12
+text = "Choose a
+ building..."
+horizontal_alignment = 1
+
+[node name="UpgradeSlot" parent="." instance=ExtResource("4_otgjf")]
+
+[node name="ItemCell2" type="Sprite2D" parent="."]
+modulate = Color(0.169245, 0.169245, 0.169245, 1)
+position = Vector2(100, 86)
+scale = Vector2(0.140625, 0.140625)
+texture = ExtResource("1_1uh8f")
+
+[node name="ItemCell3" type="Sprite2D" parent="."]
+modulate = Color(0.169245, 0.169245, 0.169245, 1)
+position = Vector2(100, 64)
+scale = Vector2(0.140625, 0.140625)
+texture = ExtResource("1_1uh8f")
+
+[node name="GameladContainer" parent="." instance=ExtResource("4_0gxdm")]
+position = Vector2(80, 80)
+
+[node name="Grid" parent="." instance=ExtResource("5_5qdkr")]
+position = Vector2(19, 85)
+rows = 15
+columns = 12

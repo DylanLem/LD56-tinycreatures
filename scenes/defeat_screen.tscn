@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dt2jga4654yhq"]
+[gd_scene load_steps=9 format=3 uid="uid://dt2jga4654yhq"]
 
 [ext_resource type="Texture2D" uid="uid://dnay1ptw5fy2u" path="res://sprites/defeat_screen.png" id="1_ro0lt"]
 [ext_resource type="Script" path="res://src/defeat_screen.gd" id="2_sx7ck"]
 [ext_resource type="FontFile" uid="uid://3e4201c634q5" path="res://furphyTiny.ttf" id="3_aa736"]
 [ext_resource type="PackedScene" uid="uid://b84o2ks0onpad" path="res://scenes/gamelad_container.tscn" id="4_qwboj"]
+[ext_resource type="AudioStream" uid="uid://bn7nxg6xnnqvq" path="res://sfx/Deathfixed.wav" id="5_dn28b"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_simqs"]
 
@@ -43,5 +44,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_c4emk")
 text = "Retry?"
 
 [node name="GameladContainer2" parent="." instance=ExtResource("4_qwboj")]
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_dn28b")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -14,16 +14,34 @@ var sfx = {
 	"invalid":preload("res://sfx/No no.wav")
 }
 
+var music = {
+	"Termite Extermination": preload("res://sfx/Termite Extermination.wav"),
+	"HATEFUL CREATURES": preload("res://sfx/HATEFULCREATURESV2.wav"),
+	"In the Maw of Hell": preload("res://sfx/Ants will win.wav"),
+	"Dream of Peace" : preload("res://sfx/Dream of Peace.wav")
+}
+var song_strings: Array[String] = ["Termite Extermination", "HATEFUL CREATURES", "In the Maw of Hell", "Dream of Peace"]
+
+var current_song: String = "Termite Extermination";
+
+var backgrounds: Array = [preload("res://sprites/sky.png"), preload("res://sprites/night_sky.png")]
 
 func _ready() -> void:
+	
+	$Sky.texture = backgrounds.pick_random();
+	if($Sky.texture == backgrounds[1]):
+		$Sky.night_time = true;
+		
+	$Sky.initialize_clouds()
 	Global.initialize_values();
 	grid = get_node("Grid");
+	
 	
 	current_building = get_random_building()
 	next_building = get_random_building()
 	
 	$PurchaseDisplay/ModeButton.pressed.connect(toggle_delete_mode)
-	
+	$CurrentSong.text = current_song;
 	pass # Replace with function body.
 
 
@@ -34,9 +52,12 @@ func _process(delta: float) -> void:
 	
 	if ($TermiteHole.termites.size() > 0 and \
 	$TermiteHole.termites.front().pos - $Anthill.position.x < 16):
+		if(!$WarningSound.playing):
+			$WarningSound.play();
 		$WarningSprite.play()
 		$WarningSprite.visible = true
 	else:
+		$WarningSound.stop();
 		$WarningSprite.stop()
 		$WarningSprite.visible = false
 	
@@ -164,3 +185,22 @@ func _on_resource_production_timer_timeout() -> void:
 
 func toggle_delete_mode() -> void:
 	delete_mode = not delete_mode
+
+
+func _on_skip_button_pressed() -> void:
+	var song_index = song_strings.find(current_song)
+	var next = song_strings[song_index +1] if song_index < song_strings.size()-1 else song_strings[0]
+	print(next)
+	current_song = next;
+	$CurrentSong.text = current_song;
+	$MusicPlayer.stream = music[next]
+	$MusicPlayer.play();
+	pass # Replace with function body.
+
+
+func _on_sound_on_toggled(toggled_on: bool) -> void:
+	if(toggled_on):
+		$MusicPlayer.volume_db = -100.;
+	else:
+		$MusicPlayer.volume_db = -11;
+	pass # Replace with function body.

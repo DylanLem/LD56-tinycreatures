@@ -8,7 +8,7 @@ var cloudTimer:Timer;
 
 @export var cloud_sprites: Array[Texture];
 
-
+var night_time: bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,6 +19,11 @@ func _ready() -> void:
 	cloudTimer.set_wait_time(float(randi_range(3,10)));
 	cloudTimer.start();
 	
+	
+	
+	pass # Replace with function body.
+
+func initialize_clouds():
 	make_cloud()
 	make_cloud()
 	make_cloud()
@@ -29,9 +34,6 @@ func _ready() -> void:
 	for i in range(cloud_positions.size()):
 		cloud_positions[i].x += randi_range(1,128);
 	
-	pass # Replace with function body.
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var popped_clouds: Array[int];
@@ -57,6 +59,10 @@ func make_cloud():
 	
 	var cloud = Sprite2D.new();
 	cloud.texture = cloud_sprites[randi_range(0,cloud_sprites.size()-1)]
+	print("HI" , texture.resource_name)
+	
+	if(night_time):
+		cloud.modulate = Color("ffa659d2");
 	add_child(cloud);
 	
 	clouds.append(cloud);

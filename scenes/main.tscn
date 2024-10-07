@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cv64bg47j3ejo"]
+[gd_scene load_steps=29 format=3 uid="uid://cv64bg47j3ejo"]
 
 [ext_resource type="Shader" path="res://src/ants_n_mites.gdshader" id="1_7o0j6"]
 [ext_resource type="Script" path="res://src/main.gd" id="1_jg0v1"]
@@ -20,6 +20,10 @@
 [ext_resource type="AudioStream" uid="uid://dvj7vuwihnh33" path="res://sfx/Termite Extermination.wav" id="18_yalgf"]
 [ext_resource type="Texture2D" uid="uid://chx6ppi5jqp7p" path="res://sprites/exclamation_0.png" id="19_jqpuk"]
 [ext_resource type="Texture2D" uid="uid://dy7uxx5o4wutc" path="res://sprites/exclamation_1.png" id="20_dg2m4"]
+[ext_resource type="Texture2D" uid="uid://kvn7hhnj3wtk" path="res://sprites/sound_on.png" id="21_axl08"]
+[ext_resource type="Texture2D" uid="uid://dpv4e3hykwg7y" path="res://sprites/sound_off.png" id="22_fgmi1"]
+[ext_resource type="Texture2D" uid="uid://tdymeejxjncw" path="res://sprites/song_skip_button.png" id="23_gyjnk"]
+[ext_resource type="AudioStream" uid="uid://dlq8elgn5ulic" path="res://sfx/DANGERCLOSE.wav" id="24_dwkwg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ywot6"]
 shader = ExtResource("1_7o0j6")
@@ -79,12 +83,12 @@ position = Vector2(8, 66)
 rows = 15
 columns = 12
 
-[node name="Label" type="Label" parent="."]
-offset_left = 3.0
-offset_top = 1.0
-offset_right = 78.0
-offset_bottom = 7.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+[node name="CurrentSong" type="Label" parent="."]
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 98.0
+offset_bottom = 9.0
+theme_override_colors/font_color = Color(0.709804, 0.870588, 0.870588, 1)
 theme_override_fonts/font = ExtResource("11_1pbww")
 theme_override_font_sizes/font_size = 6
 text = "all termites will die
@@ -119,10 +123,10 @@ texture = ExtResource("16_vyiga")
 [node name="ResourceProductionTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="TermiteExtermination" type="AudioStreamPlayer2D" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-25, 104)
 stream = ExtResource("18_yalgf")
-volume_db = -16.0
+volume_db = -11.0
 autoplay = true
 
 [node name="GameladContainer" parent="." instance=ExtResource("18_wjy4s")]
@@ -138,4 +142,30 @@ sprite_frames = SubResource("SpriteFrames_7w07h")
 frame = 1
 frame_progress = 0.0694386
 
+[node name="SoundOn" type="TextureButton" parent="."]
+offset_left = 117.0
+offset_top = 3.0
+offset_right = 125.0
+offset_bottom = 11.0
+toggle_mode = true
+texture_normal = ExtResource("21_axl08")
+texture_pressed = ExtResource("22_fgmi1")
+
+[node name="SkipButton" type="TextureButton" parent="."]
+offset_left = 105.0
+offset_top = 3.0
+offset_right = 113.0
+offset_bottom = 11.0
+texture_normal = ExtResource("23_gyjnk")
+texture_pressed = ExtResource("23_gyjnk")
+texture_hover = ExtResource("23_gyjnk")
+texture_disabled = ExtResource("23_gyjnk")
+texture_focused = ExtResource("23_gyjnk")
+
+[node name="WarningSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_dwkwg")
+volume_db = -4.0
+
 [connection signal="timeout" from="ResourceProductionTimer" to="." method="_on_resource_production_timer_timeout"]
+[connection signal="toggled" from="SoundOn" to="." method="_on_sound_on_toggled"]
+[connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]

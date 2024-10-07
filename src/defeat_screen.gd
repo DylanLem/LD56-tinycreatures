@@ -6,6 +6,7 @@ func _ready() -> void:
 	for stat in Global.stat_map:
 		Global.update_stat(stat, (-Global.stat_map[stat])+1)
 	Global.current_level = 1;
+	$DeathSound.play();
 	pass # Replace with function body.
 
 

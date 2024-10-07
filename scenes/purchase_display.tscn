@@ -1,15 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxj3ute5vy1k6"]
+[gd_scene load_steps=13 format=3 uid="uid://dxj3ute5vy1k6"]
 
 [ext_resource type="Texture2D" uid="uid://cf0jiveoyt86" path="res://sprites/purchase_display.png" id="1_5fbtt"]
 [ext_resource type="Script" path="res://src/purchase_display.gd" id="2_lli6v"]
 [ext_resource type="Texture2D" uid="uid://c3as4kjnnxxhf" path="res://sprites/down_arrow.png" id="3_tyxpg"]
 [ext_resource type="Script" path="res://scenes/current_building_display.gd" id="4_o5m31"]
-[ext_resource type="PackedScene" uid="uid://balv33oo74mnc" path="res://scenes/shake_timer.tscn" id="5_kr3qq"]
-
+[ext_resource type="PackedScene" path="res://scenes/shake_timer.tscn" id="5_kr3qq"]
 [ext_resource type="Texture2D" uid="uid://djrwuxe5owpck" path="res://sprites/building_icon.png" id="6_1vp71"]
 [ext_resource type="Texture2D" uid="uid://bjjdijtq7k1mi" path="res://sprites/skip_button.png" id="6_phd8o"]
 [ext_resource type="Texture2D" uid="uid://dmy8t8k4i8or7" path="res://sprites/x_button.png" id="6_w7vcp"]
 [ext_resource type="Texture2D" uid="uid://b2ncnh8q28x1o" path="res://sprites/x_button_pressed.png" id="7_yjji2"]
+[ext_resource type="Texture2D" uid="uid://bkcdeah37e62q" path="res://sprites/skip_button_pressed.png" id="8_mi8lk"]
 [ext_resource type="Texture2D" uid="uid://clnvdsnybnfiy" path="res://sprites/resource_icon.png" id="9_fevty"]
 [ext_resource type="FontFile" uid="uid://3e4201c634q5" path="res://furphyTiny.ttf" id="10_qsqx5"]
 
@@ -59,6 +59,8 @@ offset_right = 29.0
 offset_bottom = 15.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_phd8o")
+texture_pressed = ExtResource("8_mi8lk")
+texture_hover = ExtResource("6_phd8o")
 ignore_texture_size = true
 
 [node name="Label" type="Label" parent="SkipButton"]
@@ -74,10 +76,10 @@ vertical_alignment = 1
 [node name="ShakeTimer" parent="SkipButton/Label" instance=ExtResource("5_kr3qq")]
 
 [node name="ModeButton" type="TextureButton" parent="."]
-offset_left = -22.0
+offset_left = -21.0
 offset_top = 15.0
 offset_right = 30.0
-offset_bottom = 27.0
+offset_bottom = 25.0
 mouse_default_cursor_shape = 2
 toggle_mode = true
 keep_pressed_outside = true
@@ -88,7 +90,7 @@ ignore_texture_size = true
 
 [node name="Label" type="Label" parent="ModeButton"]
 layout_mode = 0
-offset_left = 16.0
+offset_left = 15.0
 offset_top = 2.0
 offset_right = 46.0
 offset_bottom = 11.0

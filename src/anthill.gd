@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 	
 	
 	if ants.size() > 0 && ants.front().pos > get_parent().get_node("TermiteHole").position.x:
-		print("YEAH BABY!")
+		#print("YEAH BABY!")
 		get_tree().change_scene_to_file("res://scenes/level_transition.tscn");
 		ants.pop_front()
 		

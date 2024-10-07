@@ -4,9 +4,10 @@ var cells: Array[Cell];
 
 var type: Building.BuildingType = Building.BuildingType.None;
 
-var multiplier: float = 0;
 
-var prev_multiplier: float = 0;
+var multiplier: float = 0.0;
+var prev_multiplier: float = 0.0;
+
 
 var cell_val: float = 0.005;
 
@@ -23,7 +24,7 @@ var size: int :
 
 func assimilate_cluster(cluster: Cluster):
 	if(cluster.type != self.type):
-		print("attempted to merge clusters of different type: ", self.type, " to ", cluster.type)
+		#print("attempted to merge clusters of different type: ", self.type, " to ", cluster.type)
 	
 	#print("I am size before: ",  self.cells.size())
 	for cell in cluster.cells:
@@ -33,10 +34,13 @@ func assimilate_cluster(cluster: Cluster):
 			self.cells.append(cell)
 	#cluster.cells.clear();
 	#print("I am size after: ", self.cells.size())
+	
+	Global.update_stat(cluster.type, -cluster.multiplier)
+	
 	pass;
 
 func calculate_multiplier():
-	var premul = 1 + (size * cell_val) * size;
+	var premul =  (size * cell_val) * size;
 	var final = premul;
 	if(premul >= soft_cap):
 		var excess = premul - soft_cap;
@@ -60,9 +64,10 @@ func disable() -> void:
 	if not enabled: return
 	
 	enabled = false
+	print("i ahve been dislabed")
 	
 	calculate_multiplier()
-	Global.update_stat(self.type, 1 - multiplier)
+	Global.update_stat(self.type, -multiplier)
 	
 	for cell in cells:
 		cell.disabled = true
@@ -121,7 +126,7 @@ func delete() -> void:
 	
 	if enabled:
 		calculate_multiplier()
-		Global.update_stat(self.type, 1 - multiplier)
+		Global.update_stat(self.type, -multiplier)
 	
 	erase_links()
 	

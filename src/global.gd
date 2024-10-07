@@ -8,10 +8,11 @@ const font_big_regular: Font = preload("res://furphySmall.ttf")
 
 const cell_size: int = 3
 
-var starting_resources: float = 1
+var starting_resources: float = 3
 var resources: float = 0
 
-var resource_production: float = 0.5;
+var starting_resource_production: float = 0.25
+var resource_production: float = 0;
 
 var ant_damage: float = 1.0;
 var ant_defense: float = 1.0;
@@ -47,14 +48,19 @@ func _ready() -> void:
 	initialize_values();
 
 func initialize_values():
-	resources = starting_resources
-	
 	building_placed = 0
 	buildings_skipped= 0
 	clusters_deleted = 0
 	calculate_place_building_cost()
 	calculate_skip_building_cost()
 	calculate_delete_clusters_cost()
+	
+	for stat in Global.stat_map:
+		Global.update_stat(stat, (-Global.stat_map[stat])+1)
+	update_statmap()
+	
+	resources = starting_resources
+	resource_production = starting_resource_production
 
 var stat_map: Dictionary = {
 	Building.BuildingType.Attack : ant_damage,
@@ -81,6 +87,7 @@ func update_stat(b_type: Building.BuildingType, value: float):
 		Building.BuildingType.Population : 
 			ant_production += value;	
 	update_statmap();
+	#print(stat_map)
 
 
 func update_statmap():
@@ -112,12 +119,12 @@ func increment_deleted_clusters():
 
 
 func calculate_place_building_cost():
-	place_building_cost = clamp(floor(building_placed * 0.4 /(((log(Global.efficiency)+1)/ log(2))*2)), 1, INF)
+	place_building_cost = clamp(floor(pow(building_placed, 1.2) /(((log(Global.efficiency)+1)/ log(2))*2)), 1, INF)
 
 
 func calculate_skip_building_cost():
-	skip_building_cost = clamp(floor(buildings_skipped * 0.275/(((log(Global.efficiency)+1)/ log(2))*2)), 0, INF)
+	skip_building_cost = clamp(floor(buildings_skipped * 0.25/(((log(Global.efficiency)+1)/ log(2))*2)), 0, INF)
 
 
 func calculate_delete_clusters_cost():
-	delete_cluster_cost = clamp(floor(clusters_deleted * 0.4), 1, INF)
+	delete_cluster_cost = clamp(floor(clusters_deleted * 0.5), 1, INF)

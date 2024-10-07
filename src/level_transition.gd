@@ -6,9 +6,7 @@ var tooltips = ["Each colour provides different bonuses to your ants.", "one big
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$LevelNum.text = "Level " + str(Global.current_level);
-	$Tooltip.text = tooltips.pick_random();	
-	for stat in Global.stat_map:
-		Global.update_stat(stat, (-Global.stat_map[stat])+1)
+	$Tooltip.text = tooltips.pick_random();
 	pass # Replace with function body.
 
 

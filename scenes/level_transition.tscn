@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=7 format=3 uid="uid://hgwwnvpfviui"]
-=======
-[gd_scene load_steps=8 format=3 uid="uid://hgwwnvpfviui"]
->>>>>>> 26ecccbf28f725721f81e8d876b9961ee57239d0
+[gd_scene load_steps=9 format=3 uid="uid://cikpjwk8iqmqw"]
 
 [ext_resource type="Texture2D" uid="uid://dpaaam01tvr1m" path="res://sprites/level_complete.png" id="1_8wlqf"]
 [ext_resource type="Script" path="res://src/level_transition.gd" id="2_acmvw"]
@@ -39,6 +35,7 @@ offset_left = -26.0
 offset_top = -45.0
 offset_right = 24.0
 offset_bottom = -28.0
+theme_override_fonts/font = ExtResource("3_6fyyq")
 theme_override_font_sizes/font_size = 6
 text = "level"
 horizontal_alignment = 1
@@ -50,6 +47,7 @@ offset_top = 42.0
 offset_right = 95.0
 offset_bottom = 68.0
 scale = Vector2(0.8, 0.8)
+theme_override_fonts/font = ExtResource("3_6fyyq")
 theme_override_font_sizes/font_size = 6
 text = "this is a big string of text that is very important"
 horizontal_alignment = 1

@@ -123,6 +123,28 @@ func validate_clusters() -> void:
 				cluster.enable()
 
 
+func foreach_cluster(function: Callable) -> void:
+	var traversed_clusters: Dictionary = {}
+	
+	for row in contents:
+		for grid_cell: Cell in row:
+			
+			if grid_cell == null:
+				continue
+			
+			var cluster: Cluster = grid_cell.cluster
+			
+			if cluster == null or traversed_clusters.has(cluster):
+				continue
+			
+			traversed_clusters[cluster] = true
+			
+			if dijkstra(grid_cell, root_cell).dijk_prev == null:
+				cluster.disable()
+			else:
+				cluster.enable()
+
+
 func dijkstra(source: Cell, target: Cell) -> Cell:
 	var unvisited: Array[Cell] = []
 

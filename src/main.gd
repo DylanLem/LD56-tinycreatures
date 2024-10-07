@@ -32,6 +32,14 @@ func _process(delta: float) -> void:
 	#if Input.is_action_just_pressed("right_click"):
 		#get_tree().change_scene_to_file("res://scenes/level_transition.tscn");
 	
+	if ($TermiteHole.termites.size() > 0 and \
+	$TermiteHole.termites.front().pos - $Anthill.position.x < 16):
+		$WarningSprite.play()
+		$WarningSprite.visible = true
+	else:
+		$WarningSprite.stop()
+		$WarningSprite.visible = false
+	
 	grid.update(delta)
 	
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)

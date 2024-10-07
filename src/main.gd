@@ -9,8 +9,7 @@ var delete_mode: bool = false
 
 
 func _ready() -> void:
-	Global.resources = Global.starting_resources
-	
+	Global.initialize_values();
 	grid = get_node("Grid");
 	
 	current_building = get_random_building()

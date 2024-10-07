@@ -1,7 +1,7 @@
 extends Sprite2D
 
 var tooltips = ["Each colour provides different bonuses to your ants.", "one big cluster is FAR better than many small clusters.", "termites aren't very smart.", "this game was made in 3 days",\
-"Try Lighthouse II!", "Be careful when deleting, disabled clusters are useless.", "yellow production boosts everything"]
+"Try Lighthouse II!", "Be careful when deleting, disabled clusters are useless.", "yellow production boosts everything", "Extra ants and termites will garrison in their bases."]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

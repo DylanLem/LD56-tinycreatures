@@ -3,6 +3,7 @@ extends Node
 
 const font_regular: Font = preload("res://furphyTiny.ttf")
 const font_mono: Font = preload("res://furphyTiny.ttf")
+const font_big_regular: Font = preload("res://furphySmall.ttf")
 
 
 const cell_size: int = 3

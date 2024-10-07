@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cu5sqdu85p8iu"]
+[gd_scene load_steps=12 format=3 uid="uid://cu5sqdu85p8iu"]
 
 [ext_resource type="Script" path="res://src/title.gd" id="1_0c0kl"]
 [ext_resource type="Texture2D" uid="uid://c8upta11nexky" path="res://sprites/gamelad_container.png" id="2_3qudi"]
 [ext_resource type="FontFile" uid="uid://3e4201c634q5" path="res://furphyTiny.ttf" id="2_wgx60"]
 [ext_resource type="Texture2D" uid="uid://bu8lyyrhr80j4" path="res://sprites/ANT-title.png" id="2_wj6k0"]
+[ext_resource type="FontFile" uid="uid://b0tm0gblftqwb" path="res://furphyMediumBold.ttf" id="3_ob38l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2fm1m"]
 atlas = ExtResource("2_wj6k0")
@@ -53,23 +54,27 @@ autoplay = "default"
 frame_progress = 0.0677236
 
 [node name="Label" type="Label" parent="."]
-offset_left = 20.0
-offset_top = 52.0
-offset_right = 80.0
-offset_bottom = 67.0
-scale = Vector2(2, 2)
-theme_override_fonts/font = ExtResource("2_wgx60")
-theme_override_font_sizes/font_size = 6
-text = "Amt conquest"
-horizontal_alignment = 1
+offset_left = 32.0
+offset_top = 54.0
+offset_right = 129.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(0.19, 0.0981667, 0, 0.705882)
+theme_override_fonts/font = ExtResource("3_ob38l")
+theme_override_font_sizes/font_size = 9
+text = "ANT CONQUEST"
 
 [node name="Button" type="Button" parent="."]
-offset_left = 26.0
-offset_top = 87.0
-offset_right = 134.0
-offset_bottom = 107.0
+offset_left = 40.0
+offset_top = 88.0
+offset_right = 122.0
+offset_bottom = 106.0
 mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 12
+theme_override_colors/font_hover_pressed_color = Color(0.211765, 0.0784314, 0, 1)
+theme_override_colors/font_hover_color = Color(0.21, 0.077, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.211765, 0.0784314, 0, 1)
+theme_override_colors/font_color = Color(0.16, 0.0826667, 0, 1)
+theme_override_fonts/font = ExtResource("3_ob38l")
+theme_override_font_sizes/font_size = 9
 theme_override_styles/focus = SubResource("StyleBoxEmpty_e5a1c")
 text = "start game"
 flat = true
@@ -83,7 +88,9 @@ offset_left = 54.0
 offset_top = 68.0
 offset_right = 139.0
 offset_bottom = 75.0
+theme_override_colors/font_color = Color(0.27, 0.15255, 0.027, 0.647059)
+theme_override_fonts/font = ExtResource("2_wgx60")
 theme_override_font_sizes/font_size = 6
-text = "by lighthouse dev"
+text = "by LighthouseDev"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

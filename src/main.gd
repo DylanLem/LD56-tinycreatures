@@ -22,8 +22,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
-	if Input.is_action_just_pressed("right_click"):
-		get_tree().change_scene_to_file("res://scenes/level_transition.tscn");
+	#if Input.is_action_just_pressed("right_click"):
+		#get_tree().change_scene_to_file("res://scenes/level_transition.tscn");
 	
 	grid.update(delta)
 	

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b84o2ks0onpad"]
+[gd_scene load_steps=5 format=3 uid="uid://b84o2ks0onpad"]
 
 [ext_resource type="Texture2D" uid="uid://c8upta11nexky" path="res://sprites/gamelad_container.png" id="1_qxy4h"]
 [ext_resource type="Script" path="res://src/gamelad_container.gd" id="2_2qtwh"]
 [ext_resource type="Texture2D" uid="uid://cyoq5oitdrbkh" path="res://sprites/power_button.png" id="3_lprp8"]
+[ext_resource type="Texture2D" uid="uid://cqksjxu1e5qp8" path="res://sprites/power_button_pressed.png" id="4_xfqdq"]
 
 [node name="GameladContainer" type="Sprite2D"]
 texture = ExtResource("1_qxy4h")
@@ -26,8 +27,9 @@ offset_left = 62.0
 offset_top = 64.0
 offset_right = 78.0
 offset_bottom = 80.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_lprp8")
-texture_pressed = ExtResource("3_lprp8")
+texture_pressed = ExtResource("4_xfqdq")
 
 [connection signal="mouse_entered" from="Interior" to="." method="_on_interior_mouse_entered"]
 [connection signal="mouse_exited" from="Interior" to="." method="_on_interior_mouse_exited"]

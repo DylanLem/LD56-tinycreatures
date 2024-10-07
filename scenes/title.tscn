@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cu5sqdu85p8iu"]
+[gd_scene load_steps=13 format=3 uid="uid://cu5sqdu85p8iu"]
 
 [ext_resource type="Script" path="res://src/title.gd" id="1_0c0kl"]
 [ext_resource type="FontFile" uid="uid://3e4201c634q5" path="res://furphyTiny.ttf" id="2_wgx60"]
 [ext_resource type="Texture2D" uid="uid://bu8lyyrhr80j4" path="res://sprites/ANT-title.png" id="2_wj6k0"]
 [ext_resource type="FontFile" uid="uid://b0tm0gblftqwb" path="res://furphyMediumBold.ttf" id="3_ob38l"]
 [ext_resource type="PackedScene" uid="uid://b84o2ks0onpad" path="res://scenes/gamelad_container.tscn" id="4_xfbnw"]
+[ext_resource type="AudioStream" uid="uid://vbrn0v7go2is" path="res://sfx/Menu Music.wav" id="6_1dkgb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2fm1m"]
 atlas = ExtResource("2_wj6k0")
@@ -92,5 +93,11 @@ theme_override_colors/font_color = Color(0.27, 0.15255, 0.027, 0.647059)
 theme_override_fonts/font = ExtResource("2_wgx60")
 theme_override_font_sizes/font_size = 6
 text = "by LighthouseDev"
+
+[node name="MenuMusic" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-19, 66)
+stream = ExtResource("6_1dkgb")
+volume_db = -9.0
+autoplay = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

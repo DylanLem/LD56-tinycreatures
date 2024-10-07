@@ -23,7 +23,7 @@ var size: int :
 
 
 func assimilate_cluster(cluster: Cluster):
-	if(cluster.type != self.type):
+	#if(cluster.type != self.type):
 		#print("attempted to merge clusters of different type: ", self.type, " to ", cluster.type)
 	
 	#print("I am size before: ",  self.cells.size())

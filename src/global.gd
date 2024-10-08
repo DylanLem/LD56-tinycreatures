@@ -8,7 +8,7 @@ const font_big_regular: Font = preload("res://furphySmall.ttf")
 
 const cell_size: int = 3
 
-var starting_resources: float = 3
+var starting_resources: float = 5
 var resources: float = 0
 
 var starting_resource_production: float = 0.25
@@ -119,7 +119,7 @@ func increment_deleted_clusters():
 
 
 func calculate_place_building_cost():
-	place_building_cost = clamp(floor(pow(building_placed, 1.2) /(((log(Global.efficiency)+1)/ log(2))*2)), 1, INF)
+	place_building_cost = clamp(floor(pow(building_placed, 1.18) /(((log(Global.efficiency)+1)/ log(2))*2)), 1, INF)
 
 
 func calculate_skip_building_cost():

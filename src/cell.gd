@@ -23,11 +23,11 @@ var dijk_visited: bool = false
 
 
 func _ready() -> void:
-	pass # Replace with function body.
+	draw.connect(draw_cell)
 
 
 func _process(delta: float) -> void:
-	pass
+	print("hi")
 
 
 func highlight(type: Building.BuildingType) -> void:
@@ -57,13 +57,13 @@ static func get_color(type: Building.BuildingType) -> Color:
 			return Color(0.4231, 0.7539, 0.4039, 1)
 
 	return Color.WHITE
-	
-	
-	
+
+
+
 func on_board_placement():
 	var neighbours = get_neighbours()
 	
-	var matching_neighbours = [];		
+	var matching_neighbours = [];
 	
 	
 	for neighbour in neighbours:
@@ -162,9 +162,23 @@ func apply_multi() -> void:
 	pass;
 
 
-
 func clear() -> void:
 	type = Building.BuildingType.None
-	#cluster.cells.erase(self)
 	cluster = null
 	disabled = false
+
+
+func draw_cell(pos: Vector2i, size: int) -> void:
+	var rect = Rect2i(
+		pos,
+		Vector2i(size, size)
+	)
+	
+	draw_rect(rect, get_draw_color())
+	
+	if disabled or show_darken:
+		var overlay = Color.from_hsv(0, 0, 0, 0.65)
+		draw_rect(rect, overlay)
+	
+	if show_x:
+		draw_texture(preload("res://sprites/x.png"), pos)

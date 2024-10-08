@@ -86,16 +86,16 @@ func _process(delta: float) -> void:
 					
 					var cell = grid.contents[building_row][building_col]
 					
-					var building_cell = current_building.cells[r][c]
+					var building_cell_type = current_building.shape[r][c]
 					
 					if (cell.type != Building.BuildingType.None and \
-					building_cell != Building.BuildingType.None):
+					building_cell_type != Building.BuildingType.None):
 						#cell.show_x = true
-						cell.highlight(building_cell)
+						cell.highlight(building_cell_type)
 						cell.show_darken = true
 						valid_position = false
-					elif building_cell != Building.BuildingType.None:
-						cell.highlight(building_cell)
+					elif building_cell_type != Building.BuildingType.None:
+						cell.highlight(building_cell_type)
 						building_cells.append(cell)
 			
 			var has_neighbour = false

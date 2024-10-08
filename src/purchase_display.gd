@@ -15,6 +15,13 @@ func _ready() -> void:
 	toggle_button_default_position = $ToggleButton.position
 	
 	game = get_parent()
+	
+	$CurrentBuildingDisplay.get_building = func():
+		return get_parent().current_building
+	$NextBuildingDisplay.get_building = func():
+		return get_parent().next_building
+	$CurrentBuildingDisplay/Label.text = "held"
+	$NextBuildingDisplay/Label.text = "next"
 
 
 func _process(delta: float) -> void:

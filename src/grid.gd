@@ -67,11 +67,18 @@ func get_neighbour(cell: Cell, direction: Direction) -> Cell:
 
 
 func _draw() -> void:
+	var darker = Color.from_hsv(0,0,0,0.2)
+	
+	var background_rect = Rect2i(
+		Vector2i.ZERO,
+		Vector2i(columns*(Global.cell_size+1)-1, rows*(Global.cell_size+1)-1)
+	)
+	
+	draw_rect(background_rect, darker)
+	
 	for row in range(contents.size()):
 		for col in range(contents[0].size()):
-			var cell: Cell = contents[row][col]
 			
-			var darker = Color.from_hsv(0,0,0,0.2)
 			draw_rect(
 				Rect2i(
 					col*(Global.cell_size+1)+1,
@@ -81,6 +88,8 @@ func _draw() -> void:
 				),
 				darker
 			)
+			
+			var cell: Cell = contents[row][col]
 			
 			var rect = Rect2i(
 				col*(Global.cell_size+1),
@@ -96,9 +105,13 @@ func _draw() -> void:
 				draw_rect(rect, overlay)
 			
 			if cell.show_x:
-				draw_texture(preload("res://sprites/x.png"), Vector2i(
-					col*(Global.cell_size+1)-1, row*(Global.cell_size+1)-1
-					))
+				draw_texture(
+					preload("res://sprites/x.png"),
+					Vector2i(
+						col*(Global.cell_size+1)-1,
+						row*(Global.cell_size+1)-1
+					)
+				)
 
 
 func validate_clusters() -> void:

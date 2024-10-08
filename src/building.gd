@@ -12,24 +12,31 @@ enum BuildingType {
 	Speed,
 }
 
-#describes the cells that make up this building
-var cells;
+static var valid_buildingtypes: Array = []
 
-var type: BuildingType;
+static func _static_init() -> void:
+	valid_buildingtypes = BuildingType.values()
+	valid_buildingtypes.erase(BuildingType.Default)
+	valid_buildingtypes.erase(BuildingType.Invalid)
+	valid_buildingtypes.erase(BuildingType.None)
+	valid_buildingtypes.erase(BuildingType.Speed)
+
+#describes the cells that make up this building
+var shape;
 
 static var shapes = [
-	[
-		[1],
-	],
+	#[
+		#[1],
+	#],
 	[
 		[1,1],
 	],
 	[
 		[1,1,1],
 	],
-	[
-		[1,1,2],
-	],
+	#[
+		#[1,1,2],
+	#],
 	[
 		[1,1,1,1],
 	],
@@ -40,10 +47,10 @@ static var shapes = [
 		[1,1],
 		[1,1],
 	],
-	[
-		[1,1],
-		[1,2],
-	],
+	#[
+		#[1,1],
+		#[1,2],
+	#],
 	[
 		[1,2],
 		[1,2],
@@ -64,10 +71,10 @@ static var shapes = [
 		#[1,1,1],
 		#[1,0,1],
 	#],
-	[
-		[1,2,2],
-		[1,0,2],
-	],
+	#[
+		#[1,2,2],
+		#[1,0,2],
+	#],
 	[
 		[1,1,1],
 		[0,1,0],
@@ -89,39 +96,54 @@ static var shapes = [
 		[1,1,0],
 	],
 	[
-		[1,1,2],
-		[1,1,2],
+		[2,1,0],
+		[2,1,1],
 	],
 	[
 		[1,2,2],
 		[1,2,0],
 		[1,0,0],
 	],
+	[
+		[1,1],
+		[2,0],
+		[2,0],
+	],
+	[
+		[2,2],
+		[0,1],
+		[0,1],
+	],
+	[
+		[1,1,1],
+		[0,2,0],
+		[0,2,0],
+	],
 	#[
 		#[0,0,1],
 		#[1,0,1],
 		#[1,1,1],
 	#],
-	[
-		[0,0,2],
-		[1,0,2],
-		[1,1,2],
-	],
+	#[
+		#[0,0,2],
+		#[1,0,2],
+		#[1,1,2],
+	#],
 	#[
 		#[1,0,0],
 		#[1,0,0],
 		#[1,1,1],
 	#],
-	[
-		[1,0,0],
-		[1,0,0],
-		[1,2,2],
-	],
+	#[
+		#[1,0,0],
+		#[1,0,0],
+		#[1,2,2],
+	#],
 ]
 
 
 func _init() -> void:
-	cells = get_random_shape()
+	shape = get_random_shape()
 
 
 func _process(delta: float) -> void:
@@ -129,11 +151,11 @@ func _process(delta: float) -> void:
 
 
 func get_n_rows() -> int:
-	return cells.size()
+	return shape.size()
 
 
 func get_n_cols() -> int:
-	return cells[0].size()
+	return shape[0].size()
 
 
 func get_width() -> int:
@@ -145,16 +167,16 @@ func get_height() -> int:
 
 
 func rotate_clockwise() -> void:
-	var new_cells: Array[Array] = []
+	var new_shape: Array[Array] = []
 	
 	for c in range(get_n_cols()):
 		var new_row = []
 		for r in range(get_n_rows()):
-			new_row.append(cells[r][c])
+			new_row.append(shape[r][c])
 		new_row.reverse()
-		new_cells.append(new_row)
+		new_shape.append(new_row)
 	
-	cells = new_cells
+	shape = new_shape
 
 
 static func get_shape(n: int):
@@ -162,18 +184,18 @@ static func get_shape(n: int):
 	
 	var one = get_random_buildingtype()
 	var two = get_random_buildingtype()
-	var three = get_random_buildingtype()
 	
 	for r in range(shape.size()):
 		for c in range(shape[0].size()):
-			if shape[r][c] == 1:
-				shape[r][c] = one
-			elif shape[r][c] == 2:
-				shape[r][c] = two
-			elif shape[r][c] == 3:
-				shape[r][c] = three
-			else:
-				shape[r][c] = BuildingType.None
+			var cell_type = shape[r][c]
+			
+			match cell_type:
+				1:
+					shape[r][c] = one
+				2:
+					shape[r][c] = two
+				_:
+					shape[r][c] = BuildingType.None
 	
 	return shape
 
@@ -183,16 +205,4 @@ static func get_random_shape():
 
 
 static func get_random_buildingtype() -> BuildingType:
-	var valid_buildingtypes = BuildingType.values()
-	valid_buildingtypes.erase(BuildingType.Default)
-	valid_buildingtypes.erase(BuildingType.Invalid)
-	valid_buildingtypes.erase(BuildingType.None)
-	valid_buildingtypes.erase(BuildingType.Speed)
-	#valid_buildingtypes.erase(BuildingType.Defense)
 	return valid_buildingtypes.pick_random()
-
-
-func draw():
-	for r in get_n_rows():
-		for c in get_n_cols():
-			pass
